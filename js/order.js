@@ -22,14 +22,33 @@ customerArea.textContent ="wow!";
 // chatbot();
 
 /*promise version */
-const chatbot = (time, work) => {
-    return new Promise((resolve, reject) => {
+// const chatbot = (time, work) => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve(work());
+//         }, time);
+//     });
+// }
+
+// chatbot(2000, () => staffArea.textContent = "어서오세요. 서브웨이입니다.")
+
+// .then(() => chatbot(2000, () => staffArea.textContent = "메뉴랑 빵을 선택해주세요"));
+
+/*async/await version */
+const chatbot = (time) => {
+    return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(work());
+            resolve();
         }, time);
     });
 }
 
-chatbot(2000, () => staffArea.textContent = "어서오세요. 서브웨이입니다.")
+const execute = async () => {
+    await chatbot(2000);
+    staffArea.textContent = "어서오세요.서브웨이입니다.";
 
-.then(() => chatbot(2000, () => staffArea.textContent = "메뉴랑 빵을 선택해주세요"));
+    await chatbot(2000);
+    staffArea.textContent = "메뉴랑 빵을 선택해주세요.";
+}
+
+execute();
