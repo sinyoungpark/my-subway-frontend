@@ -4,100 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>서브웨이 키오스크</title>
+    <title>MY SUBWAY</title>
     <script defer src="js/data.js"></script>
 </head>
 <body>
-    <header></header>
-    <main>
-        <section class="select">
-            <section class="section" id="sect1">
-                <label for="selec1">어디서 드시고 싶으신가요?</label>
-    
-                <select name="where" id="selec1">
-                    <option value="0">매장</option>
-                    <option value="1">테이크아웃</option>
-                </select>
-            </section>
-            <section class="section" id="sect2">
-                <label for="selec2">메뉴를 선택해주세요</label>
-    
-                <select name="menu" id="sele2">
-                    <option value="0">치킨 슬라이스</option>
-                    <option value="1">치킨 베이컨 아보카도</option>
-                    <option value="2">머쉬룸</option>
-                    <option value="3">쉬림프</option>
-                </select>
-            </section>
-            <section class="section" id="sect3">
-                <label for="selec3">빵을 선택해주세요</label>
-    
-                <select name="bread" id="selec3">
-                    <option value="0">화이트</option>
-                    <option value="1">하티</option>
-                    <option value="2">파마산오레가노</option>
-                    <option value="3">위트</option>
-                    <option value="4">허니오트</option>
-                    <option value="5">플랫 브레드</option>
-                </select>
-            </section>
-            <section class="section" id="sect4">
-                <label for="selec4">사이즈를 선택해주세요</label>
-    
-                <select name="size" id="selec4">
-                    <option value="0">15cm</option>
-                    <option value="1">30cm</option>
-                </select>
-            </section>
-            <section class="section" id="sect5">
-                <label for="selec5">빵 데우기</label>
-    
-                <select name="heat" id="selec5">
-                    <option value="0">네</option>
-                    <option value="1">아니요</option>
-                </select>
-            </section>
-            <section class="section sect6">
-                <label for="selec6">야채를 골라주세요</label>
-    
-                <select name="vegetable" id="selec6">
-                    <option value="0">양상추</option>
-                    <option value="1">토마토</option>
-                    <option value="2">오이</option>
-                    <option value="3">피망</option>
-                    <option value="4">양파</option>
-                    <option value="5">피클</option>
-                    <option value="6">올리브</option>
-                    <option value="7">할라피뇨</option>
-                    <option value="8">아보카도</option>
-                </select>
-            </section>
-            <section class="section sect7">
-                <label for="selec7">소스를 골라주세요(최대 3개)</label>
-    
-                <select name="sauce" id="selec7">
-                    <option value="0">랜치드레싱</option>
-                    <option value="1">마요네즈</option>
-                    <option value="2">스위트어니언</option>
-                    <option value="3">허니 머스타드</option>
-                    <option value="4">스위트 칠리</option>
-                    <option value="5">핫칠리</option>
-                    <option value="6">사우스 웨스트</option>
-                    <option value="7">머스타드</option>
-                    <option value="8">홀스래디쉬</option>
-                    <option value="7">올리브 오일</option>
-                    <option value="8">레드와인식초</option>
-                    <option value="9">소금</option>
-                    <option value="10">후추</option>
-                    <option value="11">스모크 바베큐</option>
-                </select>
-            </section>
-        </section>
-        
-        <section class="text">
+    <!--header-->
+    <header>
+        <!--logo-->
+        <h1 class="logo"><span>MY</span> <span>SUB</span><span>WAY</span></h1>
 
-        </section>
+        <!--user-profile-->
+        <div class="user-profile">
+            <img src="img/user-profile.jpg" alt="profile-img">
+            <p class="username">username</p>
+            <p class="email">email@naver.com</p>
+        </div>
+
+        <!--nav-->
+        <nav>
+          <ul id="gnb">
+            <li>메뉴소개
+                <ul class="gnb-sub-wrap">
+                    <li><a href="#">샌드위치</a></li>
+                    <li><a href="#">재료</a></li>
+                </ul>
+            </li>
+            <li><a href="#">주문연습</a></li>
+            <li>랭킹/게시판
+                <ul class="gub-sub-wrap">
+                    <li><a href="#">랭킹</a></li>
+                    <li><a href="#">게시판</a></li>
+                </ul>
+            </li>
+            <li><a href="#">이벤트/뉴스</a></li>
+          </ul>
+        </nav>
+    </header>
+
+    <main>
     </main>
+    
     <footer></footer>
 </body>
 </html>
