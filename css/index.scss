@@ -71,9 +71,17 @@ header{
         #gnb{
             >li{
               margin-bottom : 2rem;
-            }
-            .gnb-sub-wrap{
-                display : none;
+
+              &:hover{
+                cursor : pointer;
+                background-color : skyblue;
+              }
+
+              .gnb-sub-wrap{
+                max-height : 0;
+                overflow:hidden;
+                transition : max-height 0.3s ease-in-out;
+             }
             }
         }
     }
