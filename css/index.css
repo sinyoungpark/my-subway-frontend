@@ -66,8 +66,14 @@ header nav {
 header nav #gnb > li {
   margin-bottom: 2rem;
 }
-header nav #gnb .gnb-sub-wrap {
-  display: none;
+header nav #gnb > li:hover {
+  cursor: pointer;
+  background-color: skyblue;
+}
+header nav #gnb > li .gnb-sub-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
 }
 
 main {
