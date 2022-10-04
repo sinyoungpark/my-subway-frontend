@@ -11,8 +11,10 @@
     --color-yellow-1 : #FFC20D;
     --color-green-1 : #009132;
     --color-grey-1 : #D9D9D9;
+    --color-grey-2 : #666666;
     --font-logo : 'Alfa Slab One', cursive;
     --font-primary :'Jua', sans-serif;
+    --font-nanum : 'Nanum Gothic', sans-serif;
 }
 
 a{
@@ -74,14 +76,38 @@ header{
 
               &:hover{
                 cursor : pointer;
-                background-color : skyblue;
+                color : var(--color-green-1);
+                a{
+                    color : var(--color-green-1);
+                }
               }
 
               .gnb-sub-wrap{
                 max-height : 0;
                 overflow:hidden;
-                transition : max-height 0.3s ease-in-out;
+                transition : max-height 0.2s ease-in;
+                font-family: var(--font-nanum);
+                font-size : 1rem;
+                
+                li{
+                    margin : 1rem 0;
+                    a{
+                        color : var(--color-grey-2);
+                    }
+                    &:hover{
+                        a{
+                            color : var(--color-green-1);
+                            text-decoration-line: underline;
+                        }
+                    }
+                }
              }
+            }
+
+            .active{
+                .gnb-sub-wrap{
+                    border-top: 1px solid var(--color-grey-1);
+                }
             }
         }
     }
