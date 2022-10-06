@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss" : "sass --watch ./css/index.scss ./css/index.css"
+    "scss": "sass --watch ./css/sandwich.scss ./css/sandwich.css"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/sinyoungpark/cafe-kiosk/issues"
   },
-  "homepage": "https://github.com/sinyoungpark/cafe-kiosk#readme"
+  "homepage": "https://github.com/sinyoungpark/cafe-kiosk#readme",
+  "dependencies": {
+    "json-server": "^0.17.0",
+    "node-fetch": "^3.2.10"
+  }
 }
