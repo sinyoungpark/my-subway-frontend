@@ -24,6 +24,9 @@ a {
 
 body {
   display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 header {
@@ -97,8 +100,8 @@ header nav #gnb .active .gnb-sub-wrap {
 }
 
 main {
-  background-color: skyblue;
   height: 100vh;
+  width: 100%;
 }
 
 /*# sourceMappingURL=index.css.map */
