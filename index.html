@@ -5,12 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MY SUBWAY</title>
+    
+    <!--js-->
     <script defer src="js/index.js"></script>
+
+    <!--googlefont-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <!--css-->
     <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
     <!--header-->
     <header>
@@ -29,23 +36,36 @@
           <ul id="gnb">
             <li>메뉴소개
                 <ul class="gnb-sub-wrap">
-                    <li><a href="#">샌드위치</a></li>
-                    <li><a href="#">재료</a></li>
+                    <li data-id="sandwich"><a href="#sandwich">샌드위치</a></li>
+                    <li data-id="ingredients"><a href="#ingredients">재료</a></li>
                 </ul>
             </li>
-            <li><a href="#">주문연습</a></li>
+            <li data-id="order"><a href="#order">주문연습</a></li>
             <li>랭킹/게시판
                 <ul class="gnb-sub-wrap">
-                    <li><a href="#">랭킹</a></li>
-                    <li><a href="#">게시판</a></li>
+                    <li data-id="ranking"><a href="#ranking">랭킹</a></li>
+                    <li data-id="board"><a href="#board">게시판</a></li>
                 </ul>
             </li>
-            <li><a href="#">이벤트/뉴스</a></li>
+            <li data-id="event/news"><a href="#event/news">이벤트/뉴스</a></li>
           </ul>
         </nav>
     </header>
 
     <main>
+        <section id="sect01" class="section active"></section>
+
+        <section id="sandwich" class="section"></section>
+
+        <section id="ingredients" class="section"></section>
+
+        <section id="order" class="section"></section>
+
+        <section id="ranking" class="section"></section>
+
+        <section id="board" class="section"></section>
+
+        <section id="event/news" class="section"></section>
     </main>
 
     <footer></footer>
