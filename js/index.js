@@ -17,20 +17,20 @@ makeAccordion();
 
 /*SPA */
 const makeSPA = () => {
-  const $list = document.querySelectorAll("#gnb li");
+  const $list = document.querySelectorAll("#gnb a");
+  const $logo = document.querySelector(".logo a");
 
-  $list.forEach((list) => {
-    const target = list.dataset.id;
-    if(target){
-      list.addEventListener("click", () => {
-        $section = document.getElementById(target);
+  const showSection = (target) => {
+    const sect = target.dataset.id;
+    target.addEventListener("click", () => {
+      const $section = document.getElementById(sect);
+      document.querySelector("section.active").classList.remove("active");
+      $section.classList.add("active");
+    });
+  }
 
-        document.querySelector("section.active").classList.remove("active");
-        console.log($section);
-        $section.classList.add("active");
-      });
-    }
-  });
+  $list.forEach((list) => showSection(list));
+  showSection($logo);
 }
 
 makeSPA();
