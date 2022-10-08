@@ -22,7 +22,7 @@
     <!--header-->
     <header>
         <!--logo-->
-        <h1 class="logo"><a href="#sect01" data-id="#sect01">
+        <h1 class="logo"><a href="#sect01" data-id="sect01">
             <span>MY</span> <span>SUB</span><span>WAY</span>
             </a>
         </h1>
@@ -39,15 +39,15 @@
           <ul id="gnb">
             <li>메뉴소개
                 <ul class="gnb-sub-wrap">
-                    <li><a href="#sandwich" data-id="sandwich">샌드위치</a></li>
-                    <li><a href="#ingredients" data-id="ingredients">재료</a></li>
+                    <li><a href="#sandwich" data-id="sandwich" data-parent="메뉴소개">샌드위치</a></li>
+                    <li><a href="#ingredients" data-id="ingredients" data-parent="메뉴소개">재료</a></li>
                 </ul>
             </li>
             <li><a href="#order" data-id="order">주문연습</a></li>
             <li>랭킹/게시판
                 <ul class="gnb-sub-wrap">
-                    <li><a href="#ranking" data-id="ranking">랭킹</a></li>
-                    <li><a href="#board" data-id="board">게시판</a></li>
+                    <li><a href="#ranking" data-id="ranking" data-parent="랭킹/게시판">랭킹</a></li>
+                    <li><a href="#board" data-id="board" data-parent="랭킹/게시판">게시판</a></li>
                 </ul>
             </li>
             <li><a href="#event/news" data-id="event/news">이벤트/뉴스</a></li>
@@ -56,6 +56,14 @@
     </header>
 
     <main>
+        <div class="main-top inner">
+            <p class="path">메뉴소개 ><span>1</span></p>
+            <form action="" class="src-form">
+                <label for="src-value">🔍</label>
+                <input type="text" name="src-value" id="src-value" placeholder="search...">
+            </form>
+        </div>
+
         <section id="sect01" class="section active"></section>
 
         <section id="sandwich" class="section"></section>

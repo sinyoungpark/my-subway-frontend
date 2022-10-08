@@ -19,10 +19,24 @@ makeAccordion();
 const makeSPA = () => {
   const $list = document.querySelectorAll("#gnb a");
   const $logo = document.querySelector(".logo a");
+  const $path = document.querySelector(".main-top .path");
 
   const showSection = (target) => {
     const sect = target.dataset.id;
-    target.addEventListener("click", () => {
+
+    target.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      $path.removeChild(document.querySelector(".path span"));
+      const $curpath = document.createElement("span");
+      $curpath.innerText = target.innerText;
+
+      console.log(target.innerText);
+
+      target.dataset.parent ?  $path.innerText = target.dataset.parent + " >" : $path.innerText = "";
+
+      $path.appendChild($curpath);
+
       const $section = document.getElementById(sect);
       document.querySelector("section.active").classList.remove("active");
       $section.classList.add("active");
