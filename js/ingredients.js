@@ -1,9 +1,9 @@
-const fillSandwichContent = () => {
+const fillIngredientsContent = () => {
   fetch("http://localhost:3000/info")
   .then((response) => response.json())
-  .then((data) => data.sandwich)
+  .then((data) => data.ingredients)
   .then((data) => {
-     const $ul = document.querySelector("#sandwich ul.items");
+     const $ul = document.querySelector("#ingredients ul.items");
      data.name.forEach((name, idx) => {
          let textNode;
  
@@ -32,6 +32,6 @@ const fillSandwichContent = () => {
   });
  }
  
- fillSandwichContent();
+ fillIngredientsContent();
  
  /*데이터 전송받고, 데이터로 */
