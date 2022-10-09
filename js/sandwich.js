@@ -1,6 +1,7 @@
 const fillSandwichContent = () => {
-  fetch("http://localhost:3000/sandwich")
+  fetch("http://localhost:3000/info")
   .then((response) => response.json())
+  .then((data) => data.sandwich)
   .then((data) => {
      const $ul = document.querySelector("ul.items");
      data.name.forEach((name, idx) => {

@@ -10,63 +10,25 @@
   --font-nanum: "Nanum Gothic", sans-serif;
 }
 
-.inner {
+section#sandwich .inner {
   margin: 4rem 100px;
 }
-
-main {
-  font-family: var(--font-primary);
-}
-main .main-top {
-  margin-bottom: 2rem;
-  font-size: 1.3rem;
-  display: flex;
-  justify-content: space-between;
-}
-main .main-top p.path {
-  color: var(--color-grey-2);
-}
-main .main-top p.path span {
-  color: var(--color-black);
-  margin-left: 10px;
-}
-main .main-top form {
+section#sandwich .main-visual {
   position: relative;
-  width: 20rem;
-}
-main .main-top form label {
-  position: absolute;
-  left: 0.3rem;
-  top: 60%;
-  transform: translateY(-50%);
-  z-index: 2;
-  font-size: 15px;
-}
-main .main-top form input {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2rem;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  background-color: var(--color-grey-1);
-  padding-left: 2rem;
-}
-main .main-visual {
-  position: relative;
-  height: 17rem;
-  width: 100%;
   background: #e95b1d;
+  width: 100%;
+  height: 17rem;
+  margin-top: 1rem;
 }
-main .main-visual img {
+section#sandwich .main-visual img {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
+  text-align: center;
+  color: var(--color-white);
+  font-size: 4rem;
   height: 100%;
+  width: 100%;
 }
-main .main-visual h2.main-tlt {
+section#sandwich .main-visual h2.main-tlt {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -75,27 +37,27 @@ main .main-visual h2.main-tlt {
   color: var(--color-white);
   font-size: 4rem;
 }
-main .main-visual h2.main-tlt span {
+section#sandwich .main-visual span {
   font-size: 1rem;
   display: block;
 }
-main .main-contents {
+section#sandwich .main-contents {
   margin-top: 1rem;
 }
-main .main-contents .category {
+section#sandwich .main-contents .category {
   display: flex;
 }
-main .main-contents .category li {
+section#sandwich .main-contents .category li {
   margin-right: 2rem;
 }
-main .main-contents ul.items {
+section#sandwich .main-contents ul.items {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   overflow: visible;
   height: 100vh;
 }
-main .main-contents ul.items li {
+section#sandwich .main-contents ul.items li {
   width: 382px;
   height: 295px;
   box-shadow: 0px 6px 18px -4px rgba(0, 0, 0, 0.25);
@@ -104,27 +66,25 @@ main .main-contents ul.items li {
   margin-top: 3rem;
   position: relative;
 }
-main .main-contents ul.items li img {
+section#sandwich .main-contents ul.items li img {
   width: 297px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-main .main-contents ul.items li p.name {
+section#sandwich .main-contents ul.items li p.name {
   font-size: 1.4rem;
   position: absolute;
   left: 50%;
   bottom: 15%;
   transform: translateX(-50%);
 }
-main .main-contents ul.items li p.kcal {
+section#sandwich .main-contents ul.items li p.kcal {
   font-size: 1.4rem;
   color: var(--color-yellow-1);
   position: absolute;
   left: 50%;
   bottom: 4%;
   transform: translateX(-50%);
-}
-
-/*# sourceMappingURL=sandwich.css.map */
+}/*# sourceMappingURL=sandwich.css.map */
