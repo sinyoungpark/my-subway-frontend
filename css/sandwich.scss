@@ -11,6 +11,11 @@
 }
 
 section#sandwich{
+  overflow : hidden;
+  overflow-y :visible;
+  height : 100%;
+  background-color: var(--color-white);
+
   .inner{
     margin : 4rem 100px;
   }
@@ -61,8 +66,6 @@ section#sandwich{
       display : flex;
       flex-wrap : wrap;
       justify-content: space-between;
-      overflow : visible;
-      height : 100vh;
 
       li{
         width : 382px;

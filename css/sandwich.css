@@ -10,6 +10,12 @@
   --font-nanum: "Nanum Gothic", sans-serif;
 }
 
+section#sandwich {
+  overflow: hidden;
+  overflow-y: visible;
+  height: 100%;
+  background-color: var(--color-white);
+}
 section#sandwich .inner {
   margin: 4rem 100px;
 }
@@ -54,8 +60,6 @@ section#sandwich .main-contents ul.items {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  overflow: visible;
-  height: 100vh;
 }
 section#sandwich .main-contents ul.items li {
   width: 382px;
