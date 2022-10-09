@@ -148,10 +148,6 @@ main .section {
   top: 6rem;
   left: 0;
   display: none;
-  background-color: blue;
-}
-main #sandwich {
-  background-color: yellow;
 }
 main #order {
   background-color: green;
