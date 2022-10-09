@@ -3,7 +3,7 @@ const fillSandwichContent = () => {
   .then((response) => response.json())
   .then((data) => data.sandwich)
   .then((data) => {
-     const $ul = document.querySelector("ul.items");
+     const $ul = document.querySelector("#sandwich ul.items");
      data.name.forEach((name, idx) => {
          let textNode;
  
