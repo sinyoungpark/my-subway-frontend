@@ -25,7 +25,6 @@ body{
     display : flex;
     height : 100vh;
     width : 100vw;
-    overflow : hidden;
 }
 
 header{
@@ -129,6 +128,10 @@ main{
         justify-content: space-between;
         align-items: flex-end;
         padding : 0 3rem;
+        position : sticky;
+        width : 100%;
+        top : 0;
+        z-index : 99;
 
         p.path{
             color : var(--color-grey-2);
@@ -161,13 +164,19 @@ main{
         }
     }
 
+    div.main-top.hide{
+        max-height : 0;
+        overflow: hidden;
+    }
+
     .section{
         width : 100%;
         height : 100%;
         position : absolute;
-        top : 6rem;
+        top : 0;
         left :0;
         display : none;
+        padding-top : 6rem;
     }
 
     #sect01{
