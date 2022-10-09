@@ -11,22 +11,25 @@
 }
 
 section#sandwich {
-  overflow: hidden;
-  overflow-y: visible;
   height: 100%;
   background-color: var(--color-white);
 }
 section#sandwich .inner {
   margin: 4rem 100px;
 }
-section#sandwich .main-visual {
+section#sandwich div.content {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: visible;
+}
+section#sandwich div.content .main-visual {
   position: relative;
   background: #e95b1d;
   width: 100%;
   height: 17rem;
   margin-top: 1rem;
 }
-section#sandwich .main-visual img {
+section#sandwich div.content .main-visual img {
   position: absolute;
   text-align: center;
   color: var(--color-white);
@@ -34,7 +37,7 @@ section#sandwich .main-visual img {
   height: 100%;
   width: 100%;
 }
-section#sandwich .main-visual h2.main-tlt {
+section#sandwich div.content .main-visual h2.main-tlt {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -43,25 +46,25 @@ section#sandwich .main-visual h2.main-tlt {
   color: var(--color-white);
   font-size: 4rem;
 }
-section#sandwich .main-visual span {
+section#sandwich div.content .main-visual span {
   font-size: 1rem;
   display: block;
 }
-section#sandwich .main-contents {
+section#sandwich div.content .main-contents {
   margin-top: 1rem;
 }
-section#sandwich .main-contents .category {
+section#sandwich div.content .main-contents .category {
   display: flex;
 }
-section#sandwich .main-contents .category li {
+section#sandwich div.content .main-contents .category li {
   margin-right: 2rem;
 }
-section#sandwich .main-contents ul.items {
+section#sandwich div.content .main-contents ul.items {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-section#sandwich .main-contents ul.items li {
+section#sandwich div.content .main-contents ul.items li {
   width: 382px;
   height: 295px;
   box-shadow: 0px 6px 18px -4px rgba(0, 0, 0, 0.25);
@@ -70,21 +73,21 @@ section#sandwich .main-contents ul.items li {
   margin-top: 3rem;
   position: relative;
 }
-section#sandwich .main-contents ul.items li img {
+section#sandwich div.content .main-contents ul.items li img {
   width: 297px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-section#sandwich .main-contents ul.items li p.name {
+section#sandwich div.content .main-contents ul.items li p.name {
   font-size: 1.4rem;
   position: absolute;
   left: 50%;
   bottom: 15%;
   transform: translateX(-50%);
 }
-section#sandwich .main-contents ul.items li p.kcal {
+section#sandwich div.content .main-contents ul.items li p.kcal {
   font-size: 1.4rem;
   color: var(--color-yellow-1);
   position: absolute;
