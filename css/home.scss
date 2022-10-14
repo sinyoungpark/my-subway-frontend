@@ -1,0 +1,55 @@
+:root{
+  --color-white : #ffffff;
+  --color-black : #000000;
+  --color-yellow-1 : #FFC20D;
+  --color-green-1 : #009132;
+  --color-grey-1 : #D9D9D9;
+  --color-grey-2 : #666666;
+  --font-logo : 'Alfa Slab One', cursive;
+  --font-primary :'Jua', sans-serif;
+  --font-nanum : 'Nanum Gothic', sans-serif;
+}
+
+section#sect01{
+  height : 100%;
+  display : grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap : 1rem;
+  grid-template-areas:
+  "a a a"
+  "b b c"
+  "b b c"
+  ;
+  overflow : hidden;
+  overflow-y: visible;
+
+  .inner{
+    margin : 4rem 100px;
+  }
+
+  .sub-tlt{
+    padding: 2rem;
+  }
+
+  section.my-recipes{
+    grid-area : a;
+    box-shadow : 1px 0.1rem 1rem rgb(0 0 0 / 20%);
+    border-radius: 20px;
+    margin-bottom : 0px;
+  }
+
+  section.ranking{
+    grid-area : b;
+    box-shadow : 1px 0.1rem 1rem rgb(0 0 0 / 20%);
+    border-radius: 20px;
+    margin-left : 100px;
+  }
+
+  section.ad{
+    grid-area : c;
+    box-shadow : 1px 0.1rem 1rem rgb(0 0 0 / 20%);
+    border-radius: 20px;
+    margin-right : 100px;
+    height : 600px;
+  }
+}
