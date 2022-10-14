@@ -116,11 +116,53 @@
             </div>
         </section>
 
-        <section id="order" class="section"></section>
+        <section id="order" class="section">
+        </section>
 
         <section id="ranking" class="section"></section>
 
-        <section id="board" class="section"></section>
+        <section id="board" class="section">
+            <h2 class="main-tlt">나의 레시피</h2>
+            <form action="#" class="my-recipes">
+                <label for="#menu-select">1. 메뉴를 선택해주세요</label>
+                <select name="menu" id="menu-select">
+                    <option value="">메뉴를 선택해주세요</option>
+                </select>
+
+                <label for="bread-select">2. 빵을 선택해주세요</label>
+                <select name="bread" id="bread-select">
+                    <option value="">빵을 선택해주세요</option>
+                </select>
+
+                <label for="topping-select">3. 추가 토핑을 선택해주세요</label>
+                
+                <label for="fresh-select">4. 야채를 선택해주세요</label>
+
+                <label for="source-select">5. 소스를 선택해주세요</label>
+            </form>
+
+            <form action="" class="write-board">
+                <ul class="write-menu">
+                    <ul class="select-1">
+                        <select name="add-file" id="add-file">
+                            <option value="image">🖼️</option>
+                        </select>
+
+                        <select name="tag-select" id="tag-select">
+                            <option value="본문">본문</option>
+                            <option value="제목">제목</option>
+                        </select>
+
+                        <select name="font-select" id="font-select">
+                            <option value="기본서체">기본서체</option>
+                            <option value="본고딕 R">본고딕 R</option>
+                            <option value="나눔고딕">나눔고딕</option>
+                        </select>
+                    </ul>
+                    <ul class="select-2"></ul>
+                </ul>
+            </form>
+        </section>
 
         <section id="event/news" class="section"></section>
     </main>
