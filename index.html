@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/sandwich.css">
     <link rel="stylesheet" href="css/ingredients.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 
 <body>
@@ -61,14 +62,26 @@
 
     <main>
         <div class="main-top inner">
-            <p class="path">메뉴소개 ><span>1</span></p>
+            <p class="path"><span></span></p>
             <form action="" class="src-form">
                 <label for="src-value">🔍</label>
                 <input type="text" name="src-value" id="src-value" placeholder="search...">
             </form>
         </div>
 
-        <section id="sect01" class="section active"></section>
+        <section id="sect01" class="section active">
+            <section class="my-recipes inner">
+                <h2 class="sub-tlt">나의 레시피</h2>
+                <ul class="recipe"></ul>
+            </section>
+
+            <section class="ranking">
+                <h2 class="sub-tlt">랭킹</h2>
+                <ul class="ranking"></ul>
+            </section>
+
+            <section class="ad"></section>
+        </section>
 
         <section id="sandwich" class="section">
             <div class="content">
