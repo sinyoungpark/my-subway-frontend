@@ -33,5 +33,6 @@
             "img" : ["./img/ingredients/허니오트.jpg", "./img/ingredients/하티.jpg","./img/ingredients/위트.jpg","./img/ingredients/파마산오레가노.jpg","./img/ingredients/화이트.jpg","./img/ingredients/플랫브레드.jpg","./img/ingredients/양상추.jpg", "./img/ingredients/토마토.jpg"],
             "kcal" : [235, 210, 192, 213, 202, 467, 2.9, 7.7]
         }
-    }
+    },
+    "ads" : ["./img/ads/ad-1.jpg", "./img/ads/ad-2.jpg", "./img/ads/ad-3.jpg", "./img/ads/ad-4.jpg", "./img/ads/ad-4.jpg"]
 }

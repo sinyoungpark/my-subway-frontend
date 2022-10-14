@@ -51,5 +51,59 @@ section#sect01{
     border-radius: 20px;
     margin-right : 100px;
     height : 600px;
+    display : flex;
+    flex-direction: column;
+    position  :relative;
+    overflow: hidden;
+
+    ul.ad-slides{
+      width : 100%;
+      height : 90%;
+      display : flex;
+      flex-wrap : wrap;
+      flex-direction: column;
+      position : absolute;
+      left : 0;
+      top : 0;
+
+      li{
+        width : 100%;
+        height : 100%;
+        padding-top  :1rem;
+
+        img{
+          width : 100%;
+          height :100%;
+        }
+      }
+    }
+
+    ul.circles{
+      display :flex;
+      width : 100%;
+      justify-content: center;
+      height : 100%;
+      align-items : center;
+      position : absolute;
+
+      li{
+        display : inline-block;
+        width : 10px;
+        height : 10px;
+        background-color : var(--color-black);
+        border-radius: 50%;
+        margin-left : 1rem;
+      }
+      li.active{
+        background-color : blue;
+      }
+      li:nth-child(1){
+        display : none;
+      }
+
+      li:last-child{
+        display : none;
+      }
+    }
   }
 }

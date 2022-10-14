@@ -48,3 +48,81 @@ const makeSPA = () => {
 }
 
 makeSPA();
+
+
+/*ad */
+const adSlider = () => {
+  let total ; 
+  fetch("http://localhost:3000/ads")
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((img) => {
+      /*create list */
+      const $slides = document.querySelector(".ad-slides");
+      const $list = document.createElement("li");
+      const $img = document.createElement("img");
+
+      $img.setAttribute("src", img);
+      $list.appendChild($img);
+      $slides.appendChild($list);
+
+      /*create circle */
+      const $circles = document.querySelector(".circles");
+      const $circle = document.createElement("li");
+
+      $circles.appendChild($circle);
+    });
+    return data;
+  })
+  .then((data) => {
+    total = data.length;
+    const $slides = document.querySelector(".ad-slides");
+    const $lastChild = document.createElement("li");
+    const $lastImg = document.createElement("img");
+
+    $lastImg.setAttribute("src", data[0]);
+    $lastChild.appendChild($lastImg);
+    $slides.appendChild($lastChild);
+
+    const $firstChild = document.createElement("li");
+    const $firstImg = document.createElement("img");
+
+    $firstImg.setAttribute("src", data[data.length - 1]);
+    $firstChild.appendChild($firstImg);
+    $slides.prepend($firstChild);
+
+    for(let i = 0 ; i < 2; i++){
+      /*create circle */
+      const $circles = document.querySelector(".circles");
+      const $circle = document.createElement("li");
+
+      $circles.appendChild($circle);
+    }
+  })
+  .then(() => {
+    let idx = 1;
+
+    const slideAd = () => {
+      let $slides = document.querySelector(".ad-slides");
+      let $list = document.querySelector(".ad-slides li");
+
+      let clientWidth = $list.clientWidth;
+      $slides.style.left = `-${clientWidth * idx}px`;
+      idx === total - 1? idx = 1 : idx++;
+
+      activeCircles();
+    }
+
+    const activeCircles = () => {
+      let $circles = document.querySelectorAll(".circles li");
+      
+      document.querySelector(".active").classList.remove("active");
+      $circles[idx].classList.add("active");
+    }
+    
+
+    setInterval(slideAd, 2000);
+  });
+}
+
+adSlider();

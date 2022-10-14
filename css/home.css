@@ -43,4 +43,52 @@ section#sect01 section.ad {
   border-radius: 20px;
   margin-right: 100px;
   height: 600px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+section#sect01 section.ad ul.ad-slides {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+section#sect01 section.ad ul.ad-slides li {
+  width: 100%;
+  height: 100%;
+  padding-top: 1rem;
+}
+section#sect01 section.ad ul.ad-slides li img {
+  width: 100%;
+  height: 100%;
+}
+section#sect01 section.ad ul.circles {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  position: absolute;
+}
+section#sect01 section.ad ul.circles li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-black);
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+section#sect01 section.ad ul.circles li.active {
+  background-color: blue;
+}
+section#sect01 section.ad ul.circles li:nth-child(1) {
+  display: none;
+}
+section#sect01 section.ad ul.circles li:last-child {
+  display: none;
 }/*# sourceMappingURL=home.css.map */
