@@ -10,7 +10,7 @@
   --font-nanum : 'Nanum Gothic', sans-serif;
 }
 
-section#sect01{
+section#sect01.active{
   height : 100%;
   display : grid;
   grid-template-columns: repeat(3, 1fr);
