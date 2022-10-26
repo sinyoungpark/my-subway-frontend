@@ -126,3 +126,18 @@ const adSlider = () => {
 }
 
 adSlider();
+
+
+/*signup page */
+const showSignup = () => {
+  const $sectionSignup = document.getElementById("signup");
+  const $header = document.querySelector("header");
+  const $maintop = document.querySelector(".main-top");
+
+  if($sectionSignup.classList.contains("active")){
+    $header.style.display = "none";
+    $maintop.style.display = "none";
+  }
+}
+
+showSignup();
