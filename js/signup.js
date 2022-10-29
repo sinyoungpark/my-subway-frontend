@@ -1,12 +1,11 @@
-const $form = document.querySelector("#signup form");
-const baseUrl = "http://localhost:8000";
 
 const submitSignup = () => {
-
   const $signup = document.querySelector("#signup");
   const $login = document.querySelector("#login");
+  const baseUrl = "http://localhost:8000";
+  const $form = document.querySelector("#signup form");
 
-  $form.addEventListener("submit", (e) => {
+  $form.addEventListener("submit", (e) => {    
     e.preventDefault();
     const name = e.target.querySelector('input[type="text"]');
     const email = e.target.querySelector('input[type="email"]');
