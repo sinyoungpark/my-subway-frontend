@@ -146,7 +146,6 @@ showSignup();
 //accesstoken 
 const hideRegisterPage = () => {
   if(accessToken !== null){
-    console.log(accessToken);
     $sectSignup.classList.remove("acitve");
     $sectLogin.classList.remove("active");
   }
