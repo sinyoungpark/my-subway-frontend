@@ -1,8 +1,5 @@
 
 const submitSignup = () => {
-  const $signup = document.querySelector("#signup");
-  const $login = document.querySelector("#login");
-  const baseUrl = "http://localhost:8000";
   const $form = document.querySelector("#signup form");
 
   $form.addEventListener("submit", (e) => {    
@@ -36,8 +33,8 @@ const submitSignup = () => {
         } 
         else if(res.status === 201){
           //redirect
-          $signup.classList.remove("active");
-          $login.classList.add("active");
+          $sectSignup.classList.remove("active");
+          $sectLogin.classList.add("active");
           
           alert("가입을 축하드립니다.");
         }
