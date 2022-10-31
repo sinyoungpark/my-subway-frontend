@@ -1,19 +1,8 @@
-:root{
-  --color-white : #ffffff;
-  --color-black : #000000;
-  --color-yellow-1 : #FFC20D;
-  --color-green-1 : #009132;
-  --color-grey-1 : #D9D9D9;
-  --color-grey-2 : #666666;
-  --font-logo : 'Alfa Slab One', cursive;
-  --font-primary :'Jua', sans-serif;
-  --font-nanum : 'Nanum Gothic', sans-serif;
-}
-
-#login.active{
+#login{
   height : 100%;
   width : 100%;
   position : relative;
+  display: none;
 
   h1.logo{
     position : absolute;
@@ -127,3 +116,7 @@
     }
   }
 }
+
+#login.active{
+  display :block;
+} 
