@@ -1,44 +1,33 @@
-:root {
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-yellow-1: #FFC20D;
-  --color-green-1: #009132;
-  --color-grey-1: #D9D9D9;
-  --color-grey-2: #666666;
-  --font-logo: "Alfa Slab One", cursive;
-  --font-primary:"Jua", sans-serif;
-  --font-nanum: "Nanum Gothic", sans-serif;
-}
-
-#signup.active {
+#signup {
   height: 100%;
   width: 100%;
   position: relative;
+  display: none;
 }
-#signup.active h1.logo {
+#signup h1.logo {
   position: absolute;
   font-family: var(--font-logo);
   font-size: 2.5rem;
   padding: 3rem;
 }
-#signup.active h1.logo span:nth-child(2) {
+#signup h1.logo span:nth-child(2) {
   color: var(--color-yellow-1);
 }
-#signup.active h1.logo span:nth-child(3) {
+#signup h1.logo span:nth-child(3) {
   color: var(--color-green-1);
 }
-#signup.active div.contents {
+#signup div.contents {
   display: flex;
   height: 100%;
 }
-#signup.active div.contents section.left {
+#signup div.contents section.left {
   flex-basis: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-#signup.active div.contents section.left input[type=button] {
+#signup div.contents section.left input[type=button] {
   padding: 0.8rem 4rem;
   color: white;
   background-color: #009132;
@@ -46,12 +35,12 @@
   outline: none;
   cursor: pointer;
 }
-#signup.active div.contents section.left p.sub-txt {
+#signup div.contents section.left p.sub-txt {
   font-size: 18px;
   padding: 1.3rem;
   color: rgba(0, 0, 0, 0.8);
 }
-#signup.active div.contents section.right {
+#signup div.contents section.right {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,19 +50,19 @@
   color: white;
   text-align: center;
 }
-#signup.active div.contents section.right p.sub-txt {
+#signup div.contents section.right p.sub-txt {
   font-size: 18px;
   padding: 1.3rem;
   color: rgba(255, 255, 255, 0.8);
   width: 30rem;
 }
-#signup.active div.contents section.right form {
+#signup div.contents section.right form {
   display: flex;
   flex-direction: column;
   text-align: left;
   width: 30rem;
 }
-#signup.active div.contents section.right form input[type=text], #signup.active div.contents section.right form input[type=email], #signup.active div.contents section.right form input[type=password] {
+#signup div.contents section.right form input[type=text], #signup div.contents section.right form input[type=email], #signup div.contents section.right form input[type=password] {
   height: 2.5rem;
   margin: 10px 0 20px 0;
   outline: none;
@@ -81,7 +70,7 @@
   padding-left: 10px;
   border-radius: 3px;
 }
-#signup.active div.contents section.right form input[type=submit] {
+#signup div.contents section.right form input[type=submit] {
   margin: 30px 0;
   padding: 1rem;
   background-color: transparent;
@@ -92,16 +81,20 @@
   cursor: pointer;
   transition: all 0.5s ease-in-out;
 }
-#signup.active div.contents section.right form input[type=submit]:hover {
+#signup div.contents section.right form input[type=submit]:hover {
   background-color: white;
   color: #009132;
 }
-#signup.active div.contents section.right div.social-login {
+#signup div.contents section.right div.social-login {
   font-size: 18px;
 }
-#signup.active div.contents section.right div.social-login ul {
+#signup div.contents section.right div.social-login ul {
   margin-top: 1rem;
 }
-#signup.active div.contents p.main-txt {
+#signup div.contents p.main-txt {
   font-size: 24px;
+}
+
+#signup.active {
+  display: block;
 }/*# sourceMappingURL=signup.css.map */

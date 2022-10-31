@@ -1,37 +1,26 @@
-:root {
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-yellow-1: #FFC20D;
-  --color-green-1: #009132;
-  --color-grey-1: #D9D9D9;
-  --color-grey-2: #666666;
-  --font-logo: "Alfa Slab One", cursive;
-  --font-primary:"Jua", sans-serif;
-  --font-nanum: "Nanum Gothic", sans-serif;
-}
-
-#login.active {
+#login {
   height: 100%;
   width: 100%;
   position: relative;
+  display: none;
 }
-#login.active h1.logo {
+#login h1.logo {
   position: absolute;
   font-family: var(--font-logo);
   font-size: 2.5rem;
   padding: 3rem;
 }
-#login.active h1.logo span:nth-child(2) {
+#login h1.logo span:nth-child(2) {
   color: var(--color-yellow-1);
 }
-#login.active h1.logo span:nth-child(3) {
+#login h1.logo span:nth-child(3) {
   color: var(--color-green-1);
 }
-#login.active div.contents {
+#login div.contents {
   display: flex;
   height: 100%;
 }
-#login.active div.contents section.left {
+#login div.contents section.left {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,19 +30,19 @@
   color: black;
   text-align: center;
 }
-#login.active div.contents section.left p.sub-txt {
+#login div.contents section.left p.sub-txt {
   font-size: 18px;
   padding: 1.3rem;
   color: rgba(0, 0, 0, 0.8);
   width: 30rem;
 }
-#login.active div.contents section.left form {
+#login div.contents section.left form {
   display: flex;
   flex-direction: column;
   text-align: left;
   width: 30rem;
 }
-#login.active div.contents section.left form input[type=text], #login.active div.contents section.left form input[type=email], #login.active div.contents section.left form input[type=password] {
+#login div.contents section.left form input[type=text], #login div.contents section.left form input[type=email], #login div.contents section.left form input[type=password] {
   height: 2.5rem;
   margin: 10px 0 20px 0;
   outline: none;
@@ -61,7 +50,7 @@
   padding-left: 10px;
   border-radius: 3px;
 }
-#login.active div.contents section.left form input[type=submit] {
+#login div.contents section.left form input[type=submit] {
   margin: 30px 0;
   padding: 1rem;
   background-color: #009132;
@@ -72,16 +61,16 @@
   cursor: pointer;
   transition: all 0.5s ease-in-out;
 }
-#login.active div.contents section.left form input[type=submit]:hover {
+#login div.contents section.left form input[type=submit]:hover {
   background-color: #00a53a;
 }
-#login.active div.contents section.left div.social-login {
+#login div.contents section.left div.social-login {
   font-size: 18px;
 }
-#login.active div.contents section.left div.social-login ul {
+#login div.contents section.left div.social-login ul {
   margin-top: 1rem;
 }
-#login.active div.contents section.right {
+#login div.contents section.right {
   flex-basis: 30%;
   display: flex;
   flex-direction: column;
@@ -90,7 +79,7 @@
   background-color: #009132;
   color: white;
 }
-#login.active div.contents section.right input[type=button] {
+#login div.contents section.right input[type=button] {
   padding: 0.8rem 4rem;
   color: white;
   background-color: transparent;
@@ -99,17 +88,21 @@
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
-#login.active div.contents section.right input[type=button]:hover {
+#login div.contents section.right input[type=button]:hover {
   color: #009132;
   background-color: white;
 }
-#login.active div.contents section.right p.sub-txt {
+#login div.contents section.right p.sub-txt {
   text-align: center;
   width: 25rem;
   font-size: 18px;
   padding: 1.3rem;
   color: rgba(255, 255, 255, 0.8);
 }
-#login.active div.contents p.main-txt {
+#login div.contents p.main-txt {
   font-size: 24px;
+}
+
+#login.active {
+  display: block;
 }/*# sourceMappingURL=login.css.map */
