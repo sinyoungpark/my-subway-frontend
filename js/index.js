@@ -1,3 +1,4 @@
+
 /*accordion menu*/
 const makeAccordion = () => {
   const $nav = document.querySelectorAll("#gnb > li");
@@ -130,14 +131,23 @@ adSlider();
 
 /*signup page */
 const showSignup = () => {
-  const $sectionSignup = document.getElementById("signup");
   const $header = document.querySelector("header");
   const $maintop = document.querySelector(".main-top");
 
-  if($sectionSignup.classList.contains("active")){
+  if($sectSignup.classList.contains("active")){
     $header.style.display = "none";
     $maintop.style.display = "none";
   }
 }
 
 showSignup();
+
+
+//accesstoken 
+const hideRegisterPage = () => {
+  if(accessToken !== null){
+    console.log(accessToken);
+    $sectSignup.classList.remove("acitve");
+    $sectLogin.classList.remove("active");
+  }
+} 

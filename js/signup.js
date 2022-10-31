@@ -1,12 +1,8 @@
-const $form = document.querySelector("#signup form");
-const baseUrl = "http://localhost:8000";
 
 const submitSignup = () => {
+  const $form = document.querySelector("#signup form");
 
-  const $signup = document.querySelector("#signup");
-  const $login = document.querySelector("#login");
-
-  $form.addEventListener("submit", (e) => {
+  $form.addEventListener("submit", (e) => {    
     e.preventDefault();
     const name = e.target.querySelector('input[type="text"]');
     const email = e.target.querySelector('input[type="email"]');
@@ -37,8 +33,8 @@ const submitSignup = () => {
         } 
         else if(res.status === 201){
           //redirect
-          $signup.classList.remove("active");
-          $login.classList.add("active");
+          $sectSignup.classList.remove("active");
+          $sectLogin.classList.add("active");
           
           alert("가입을 축하드립니다.");
         }
@@ -47,6 +43,15 @@ const submitSignup = () => {
     } else {
       alert("이름, 이메일, 비밀번호를 입력해주세요.")
     }
+  });
+  
+  const $loginBtn = document.querySelector("#signup .login_btn");
+
+  $loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    $sectSignup.classList.remove("active");
+    $sectLogin.classList.add("active");
   });
 
 }

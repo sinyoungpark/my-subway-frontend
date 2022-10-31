@@ -7,10 +7,12 @@
     <title>MY SUBWAY</title>
     
     <!--js-->
+    <script defer src="js/globalVar.js"></script>
     <script defer src="js/index.js"></script>
-    <script defer src="js/sandwich.js"></script>
-    <script defer src="js/ingredients.js"></script>
+    <!-- <script defer src="js/sandwich.js"></script>
+    <script defer src="js/ingredients.js"></script> -->
     <script defer src="js/signup.js"></script>
+    <script defer src="js/login.js"></script>
 
     <!--googlefont-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +25,7 @@
     <link rel="stylesheet" href="css/ingredients.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
@@ -80,7 +83,7 @@
                 <section class="left">
                     <p class="main-txt">Already Signed up?</p>
                     <p class="sub-txt">Log in to your account</p>
-                    <input type="button" value="LOG IN">
+                    <input type="button" value="LOG IN" class="login_btn">
                 </section>
                 <section class="right">
                     <p class="main-txt">Sign Up for an Account</p>
@@ -115,6 +118,44 @@
         </section>
 
         <section id="login" class="section">
+            <h1 class="logo">
+                <a href="#sect01" data-id="sect01">
+                    <span>MY</span> <span>SUB</span><span>WAY</span>
+                </a>
+            </h1>
+            <div class="contents">
+                <section class="left">
+                    <p class="main-txt">Log in Your Account</p>
+                    <p class="sub-txt">
+                        Log in to your account so you can continue building and editing your onboarding flows.
+                    </p>
+                    <!--form-->
+                    <form>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address">
+
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Enter your password">
+
+                        <input type="submit" value="LOG IN">
+                    </form>
+
+                    <!--social login form-->
+                    <div class="social-login">
+                        <p>Or log in using</p>
+                        <ul>
+                            <li>google</li>
+                            <li>facebook</li>
+                            <li>kakao</li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="right">
+                    <p class="main-txt">Don't Have an Account Yet?</p>
+                    <p class="sub-txt">Let's get you all set up so you can start creating your first experience</p>
+                    <input type="button" value="SIGN UP" class="signup_btn">
+                </section>
+            </div>
         </section>
 
         <section id="sect01" class="section">
