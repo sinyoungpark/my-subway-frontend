@@ -1,5 +1,9 @@
-
 const submitSignup = () => {
+  /*
+  1. 회원가입 rest api 요청
+  2. login 화면 전환
+  */
+
   const $form = document.querySelector("#signup form");
 
   $form.addEventListener("submit", (e) => {    
@@ -11,7 +15,8 @@ const submitSignup = () => {
   
     let isBoolean = Boolean(name.value) && Boolean(email.value) && Boolean(pwd.value);
 
-    /*signup fetch */
+
+    /*request signup api*/
     if(isBoolean){
       const data = {
         name : name.value,
@@ -19,37 +24,27 @@ const submitSignup = () => {
         password : pwd.value
       }
 
-      fetch(`${baseUrl}/customers/signup`, {
-        method : "POST",
-        mode : "cors",
-        headers :{
-          "content-type" : "application/json"
-        },
-        body : JSON.stringify(data)
-      })
-      .then((res) => {
-        if(res.status === 409){
-          alert("이미 사용 중인 이메일입니다.");
-        } 
-        else if(res.status === 201){
-          //redirect
+      axios.post(`${baseUrl}/customers/signup`, JSON.stringify(data))
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.error) alert(data.error);
+        else{
           $sectSignup.classList.remove("active");
           $sectLogin.classList.add("active");
-          
-          alert("가입을 축하드립니다.");
+          alert(data.result);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error));
     } else {
       alert("이름, 이메일, 비밀번호를 입력해주세요.")
     }
   });
   
+  /*loginBtn clickHandler*/
   const $loginBtn = document.querySelector("#signup .login_btn");
 
   $loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(e.target);
     $sectSignup.classList.remove("active");
     $sectLogin.classList.add("active");
   });
