@@ -44,6 +44,15 @@ const submitSignup = () => {
       alert("이름, 이메일, 비밀번호를 입력해주세요.")
     }
   });
+  
+  const $loginBtn = document.querySelector("#signup .login_btn");
+
+  $loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    $sectSignup.classList.remove("active");
+    $sectLogin.classList.add("active");
+  });
 
 }
 
