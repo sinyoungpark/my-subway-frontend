@@ -91,6 +91,58 @@ const home = () => {
   }
   getMyRecipes();
 
+  /*랭킹 데이터 받아오기 */
+  const getRankingData = () => {
+    const rankings = fakeDB.ranking;  
+    const $parentElement = document.querySelector("#sect01 .rankings");
+
+    rankings.forEach((item, idx) => {
+      const { writer, profile, title, img, ingredients, likes } = item;
+      const $listElement = document.createElement("li");
+      $listElement.classList.add("item");
+
+      //create num element 
+      const $num = document.createElement("span");
+      $num.classList.add("num");
+      $num.textContent = idx + 1;
+      //create title element 
+      const $titleElement = document.createElement("p");
+      $titleElement.classList.add("recipe_title");
+      $titleElement.textContent = title;
+      //create menu-img element
+      const $menuImg = document.createElement("img");
+      $menuImg.classList.add("menu_img");
+      $menuImg.setAttribute("src", img);
+      //create ingredients img
+      const $ingredients = document.createElement("ul");
+      $ingredients.classList.add("ingredients");
+      ingredients.forEach((ingredient) => {
+        const $ingre_item = document.createElement("li");
+        const $ingre_title = document.createElement("p");
+        const $ingre_img = document.createElement("img");
+
+        $ingre_title.textContent = ingredient;
+        $ingre_img.setAttribute("src", `../img/ingredients/${ingredient}.jpg`);
+        $ingre_item.append($ingre_title, $ingre_img);
+        $ingredients.append($ingre_item);
+      });
+      //create user-profile element 
+      const $profile = document.createElement("p");
+      $profile.classList.add('writer-profile');
+      $profile.textContent = writer;
+      const $writerImg = document.createElement("img");
+      $writerImg.setAttribute("src", profile);
+      $profile.appendChild($writerImg);
+      //likes
+      const $likes = document.createElement("p");
+      $likes.textContent = `좋아요 ${likes}개`;
+      $likes.classList.add("likes");
+
+      $listElement.append($num, $titleElement, $menuImg, $ingredients, $profile, $likes);
+      $parentElement.append($listElement);
+    })
+  }
+  getRankingData();
 }
 
 home();
