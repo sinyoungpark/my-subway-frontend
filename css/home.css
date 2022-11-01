@@ -1,43 +1,75 @@
-:root {
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-yellow-1: #FFC20D;
-  --color-green-1: #009132;
-  --color-grey-1: #D9D9D9;
-  --color-grey-2: #666666;
-  --font-logo: "Alfa Slab One", cursive;
-  --font-primary:"Jua", sans-serif;
-  --font-nanum: "Nanum Gothic", sans-serif;
-}
-
-section#sect01.active {
+#sect01 {
   height: 100%;
-  display: grid;
+  display: none;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
   grid-template-areas: "a a a" "b b c" "b b c";
   overflow: hidden;
   overflow-y: visible;
+  margin-top: 2.5rem;
 }
-section#sect01.active .inner {
+#sect01 .inner {
   margin: 4rem 100px;
 }
-section#sect01.active .sub-tlt {
-  padding: 2rem;
+#sect01 .sub-tlt {
+  font-size: 1.2rem;
+  padding-bottom: 2rem;
 }
-section#sect01.active section.my-recipes {
+#sect01 section.my-recipes {
+  height: 22rem;
+  overflow: hidden;
+  padding: 2rem;
   grid-area: a;
   box-shadow: 1px 0.1rem 1rem rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   margin-bottom: 0px;
 }
-section#sect01.active section.ranking {
+#sect01 section.my-recipes ul.recipes {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+#sect01 section.my-recipes ul.recipes .recipe {
+  border: 1px solid var(--color-yellow-1);
+  border-radius: 10px;
+  height: 13rem;
+  padding-top: 7px;
+  width: 500px;
+  text-align: center;
+  margin-left: 1rem;
+}
+#sect01 section.my-recipes ul.recipes .recipe p.recipe_title {
+  height: 20px;
+  overflow: hidden;
+}
+#sect01 section.my-recipes ul.recipes .recipe img.menu_img {
+  width: 150px;
+  height: 90px;
+}
+#sect01 section.my-recipes ul.recipes .recipe ul.ingredients {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#sect01 section.my-recipes ul.recipes .recipe ul.ingredients li {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  justify-content: center;
+  align-items: center;
+}
+#sect01 section.my-recipes ul.recipes .recipe ul.ingredients li img {
+  width: 60px;
+}
+#sect01 section.ranking {
   grid-area: b;
   box-shadow: 1px 0.1rem 1rem rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   margin-left: 100px;
 }
-section#sect01.active section.ad {
+#sect01 section.ad {
   grid-area: c;
   box-shadow: 1px 0.1rem 1rem rgba(0, 0, 0, 0.2);
   border-radius: 20px;
@@ -48,7 +80,7 @@ section#sect01.active section.ad {
   position: relative;
   overflow: hidden;
 }
-section#sect01.active section.ad ul.ad-slides {
+#sect01 section.ad ul.ad-slides {
   width: 100%;
   height: 90%;
   display: flex;
@@ -58,16 +90,16 @@ section#sect01.active section.ad ul.ad-slides {
   left: 0;
   top: 0;
 }
-section#sect01.active section.ad ul.ad-slides li {
+#sect01 section.ad ul.ad-slides li {
   width: 100%;
   height: 100%;
   padding-top: 1rem;
 }
-section#sect01.active section.ad ul.ad-slides li img {
+#sect01 section.ad ul.ad-slides li img {
   width: 100%;
   height: 100%;
 }
-section#sect01.active section.ad ul.circles {
+#sect01 section.ad ul.circles {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -75,7 +107,7 @@ section#sect01.active section.ad ul.circles {
   align-items: center;
   position: absolute;
 }
-section#sect01.active section.ad ul.circles li {
+#sect01 section.ad ul.circles li {
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -83,12 +115,16 @@ section#sect01.active section.ad ul.circles li {
   border-radius: 50%;
   margin-left: 1rem;
 }
-section#sect01.active section.ad ul.circles li.active {
+#sect01 section.ad ul.circles li.active {
   background-color: blue;
 }
-section#sect01.active section.ad ul.circles li:nth-child(1) {
+#sect01 section.ad ul.circles li:nth-child(1) {
   display: none;
 }
-section#sect01.active section.ad ul.circles li:last-child {
+#sect01 section.ad ul.circles li:last-child {
   display: none;
+}
+
+#sect01.active {
+  display: grid;
 }/*# sourceMappingURL=home.css.map */

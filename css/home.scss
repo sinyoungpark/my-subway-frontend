@@ -1,18 +1,6 @@
-:root{
-  --color-white : #ffffff;
-  --color-black : #000000;
-  --color-yellow-1 : #FFC20D;
-  --color-green-1 : #009132;
-  --color-grey-1 : #D9D9D9;
-  --color-grey-2 : #666666;
-  --font-logo : 'Alfa Slab One', cursive;
-  --font-primary :'Jua', sans-serif;
-  --font-nanum : 'Nanum Gothic', sans-serif;
-}
-
-section#sect01.active{
+#sect01{
   height : 100%;
-  display : grid;
+  display : none;
   grid-template-columns: repeat(3, 1fr);
   grid-gap : 1rem;
   grid-template-areas:
@@ -22,20 +10,73 @@ section#sect01.active{
   ;
   overflow : hidden;
   overflow-y: visible;
+  margin-top : 2.5rem;
 
   .inner{
     margin : 4rem 100px;
   }
 
   .sub-tlt{
-    padding: 2rem;
+    font-size : 1.2rem;
+    padding-bottom : 2rem;
   }
 
   section.my-recipes{
+    height : 22rem;
+    overflow : hidden;
+    padding: 2rem;
     grid-area : a;
     box-shadow : 1px 0.1rem 1rem rgb(0 0 0 / 20%);
     border-radius: 20px;
     margin-bottom : 0px;
+
+    ul.recipes{
+      display : flex;
+      flex-direction: row;
+      overflow-x: auto;
+
+      .recipe{
+        border : 1px solid var(--color-yellow-1);
+        border-radius : 10px;
+        height : 13rem;
+        padding-top : 7px;
+        width : 500px;
+        text-align: center;
+        margin-left : 1rem;
+
+        p.recipe_title{
+          height : 20px;
+          overflow: hidden;
+        }
+
+
+        img.menu_img{
+          width : 150px;
+          height : 90px;
+        }
+
+        ul.ingredients{
+          display : flex;
+          justify-content: center;
+          align-items: center;
+
+          li{
+            margin : 0;
+            display :flex;
+            flex-direction: column;
+            flex-wrap : wrap;
+            font-size : 0.8rem;
+            justify-content: center;
+            align-items : center;
+
+            img{
+              width : 60px;
+            }
+          }
+
+        }
+      }
+    }
   }
 
   section.ranking{
@@ -106,4 +147,8 @@ section#sect01.active{
       }
     }
   }
+}
+
+#sect01.active{
+  display : grid;
 }
