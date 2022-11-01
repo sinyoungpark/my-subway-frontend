@@ -63,11 +63,87 @@
 #sect01 section.my-recipes ul.recipes .recipe ul.ingredients li img {
   width: 60px;
 }
-#sect01 section.ranking {
+#sect01 section.recipes-ranking {
   grid-area: b;
   box-shadow: 1px 0.1rem 1rem rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   margin-left: 100px;
+  padding: 2rem;
+}
+#sect01 section.recipes-ranking ul.rankings {
+  display: flex;
+  flex-wrap: wrap;
+  height: 35rem;
+  overflow: hidden;
+  overflow-y: auto;
+}
+#sect01 section.recipes-ranking ul.rankings li.item:first-child {
+  background-color: var(--color-yellow-1);
+}
+#sect01 section.recipes-ranking ul.rankings li.item:first-child .num {
+  background-color: #FFBB0D;
+}
+#sect01 section.recipes-ranking ul.rankings li.item:first-child p.likes {
+  border-color: white;
+}
+#sect01 section.recipes-ranking ul.rankings li.item {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-yellow-1);
+  border-radius: 10px;
+  height: 100px;
+  margin-bottom: 1rem;
+  width: 100%;
+  overflow: hidden;
+}
+#sect01 section.recipes-ranking ul.rankings li.item .num {
+  width: 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#sect01 section.recipes-ranking ul.rankings li.item p.recipe_title {
+  font-size: 0.8rem;
+  width: 80px;
+  margin-left: 10px;
+}
+#sect01 section.recipes-ranking ul.rankings li.item img.menu_img {
+  width: 150px;
+  height: 90px;
+}
+#sect01 section.recipes-ranking ul.rankings li.item ul.ingredients {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#sect01 section.recipes-ranking ul.rankings li.item ul.ingredients li {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  justify-content: center;
+  align-items: center;
+}
+#sect01 section.recipes-ranking ul.rankings li.item ul.ingredients li img {
+  width: 60px;
+}
+#sect01 section.recipes-ranking ul.rankings li.item p.writer-profile {
+  margin: 0 60px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+#sect01 section.recipes-ranking ul.rankings li.item p.writer-profile img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+#sect01 section.recipes-ranking ul.rankings li.item p.likes {
+  border: 1px solid var(--color-yellow-1);
+  border-radius: 20px;
+  padding: 10px;
 }
 #sect01 section.ad {
   grid-area: c;
