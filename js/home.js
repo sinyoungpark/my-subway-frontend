@@ -143,98 +143,84 @@ const home = () => {
     })
   }
   getRankingData();
+
+    /*ad */
+  const adSlider = () => {
+    let total = null;
+    const adData = fakeDB.ad;
+    const $slides = document.querySelector(".ad-slides");
+    const $circles = document.querySelector(".circles");
+
+    //슬라이드 리스트, circle 생성
+    adData.forEach((item) => {
+      const $list = document.createElement("li");
+      /*광고 이미지 */
+      const $img = document.createElement("img");
+      $img.setAttribute("src", item);
+      $list.append($img);
+      $slides.appendChild($list);
+      /*create circles */
+      const $circle = document.createElement("li");
+      $circles.appendChild($circle);
+    });
+
+    total = adData.length;
+    /*앞 뒤 하나씩 슬라이드 추가 */
+    const $lastChild = document.createElement("li");
+    const $lastImg = document.createElement("img");
+
+    $lastImg.setAttribute("src", adData[0]);
+    $lastChild.appendChild($lastImg);
+    $slides.appendChild($lastChild);
+
+    const $firstChild = document.createElement("li");
+    const $firstImg = document.createElement("img");
+
+    $firstImg.setAttribute("src", adData[adData.length - 1]);
+    $firstChild.appendChild($firstImg);
+    $slides.prepend($firstChild);
+    //circle도 2개 추가 
+    for(let i = 0 ; i < 2; i++){
+      /*create circle */
+      const $circles = document.querySelector(".circles");
+      const $circle = document.createElement("li");
+
+      $circles.appendChild($circle);
+    }
+
+    const $slidesList = document.querySelector(".ad-slides li");
+    let idx = 1;
+
+    const slideHandler = () => {
+      //현재 보여지는 slide
+
+      //현재 idx x clientWidth 만틈 왼쪽으로 보내기.
+      let clientWidth = $slidesList.clientWidth;
+      $slides.style.left = `-${clientWidth * idx}px`;
+
+      //circle 함수 호출 
+      circleHandler();
+    }
+
+    const circleHandler = () => {
+      const target =document.querySelector(".circles .active");
+      if(target){
+        target.classList.remove("active");
+      }
+      $circles.children[idx].classList.add("active");
+      countIdx();
+    }
+
+    const countIdx = () => {
+      idx === total ? idx = 1 : idx++;
+    }
+
+    slideHandler();
+    setInterval(slideHandler, 2000);
+  }
+  adSlider();
 }
 
 home();
 
 
-// /*ad */
-// const adSlider = () => {
-//   let total ; 
-//   fetch("http://localhost:3000/ads")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     data.forEach((img) => {
-//       /*create list */
-//       const $slides = document.querySelector(".ad-slides");
-//       const $list = document.createElement("li");
-//       const $img = document.createElement("img");
-
-//       $img.setAttribute("src", img);
-//       $list.appendChild($img);
-//       $slides.appendChild($list);
-
-//       /*create circle */
-//       const $circles = document.querySelector(".circles");
-//       const $circle = document.createElement("li");
-
-//       $circles.appendChild($circle);
-//     });
-//     return data;
-//   })
-//   .then((data) => {
-//     total = data.length;
-//     const $slides = document.querySelector(".ad-slides");
-//     const $lastChild = document.createElement("li");
-//     const $lastImg = document.createElement("img");
-
-//     $lastImg.setAttribute("src", data[0]);
-//     $lastChild.appendChild($lastImg);
-//     $slides.appendChild($lastChild);
-
-//     const $firstChild = document.createElement("li");
-//     const $firstImg = document.createElement("img");
-
-//     $firstImg.setAttribute("src", data[data.length - 1]);
-//     $firstChild.appendChild($firstImg);
-//     $slides.prepend($firstChild);
-
-//     for(let i = 0 ; i < 2; i++){
-//       /*create circle */
-//       const $circles = document.querySelector(".circles");
-//       const $circle = document.createElement("li");
-
-//       $circles.appendChild($circle);
-//     }
-//   })
-//   .then(() => {
-//     let idx = 1;
-
-//     const slideAd = () => {
-//       let $slides = document.querySelector(".ad-slides");
-//       let $list = document.querySelector(".ad-slides li");
-
-//       let clientWidth = $list.clientWidth;
-//       $slides.style.left = `-${clientWidth * idx}px`;
-//       idx === total - 1? idx = 1 : idx++;
-
-//       activeCircles();
-//     }
-
-//     const activeCircles = () => {
-//       let $circles = document.querySelectorAll(".circles li");
-      
-//       document.querySelector(".active").classList.remove("active");
-//       $circles[idx].classList.add("active");
-//     }
-    
-
-//     setInterval(slideAd, 2000);
-//   });
-// }
-
-// adSlider();
-
-
-// /*signup page */
-// const showSignup = () => {
-//   const $header = document.querySelector("header");
-//   const $maintop = document.querySelector(".main-top");
-
-//   if($sectSignup.classList.contains("active")){
-//     $header.style.display = "none";
-//     $maintop.style.display = "none";
-//   }
-// }
-
-// showSignup();
