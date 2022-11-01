@@ -211,19 +211,20 @@
       width : 100%;
       justify-content: center;
       height : 100%;
-      align-items : center;
+      align-items : flex-end;
+      padding-bottom : 1.3rem;
       position : absolute;
 
       li{
         display : inline-block;
         width : 10px;
         height : 10px;
-        background-color : var(--color-black);
         border-radius: 50%;
         margin-left : 1rem;
+        border : 1px solid var(--color-green-1);
       }
       li.active{
-        background-color : blue;
+        background-color : var(--color-green-1);
       }
       li:nth-child(1){
         display : none;
