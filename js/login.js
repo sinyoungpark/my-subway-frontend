@@ -29,17 +29,14 @@ const submitLogin = () => {
           "content-type" : "application/json"
         },
         body : JSON.stringify(data),
-        credentials : "include"
       })
       .then((res) => res.json())
       .then((data) => {
         if(data.error) alert(data.error);
         else{
-          accessToken = data.accesstoken;
+          window.sessionStorage.setItem('accesstoken', data.accesstoken);
           hideRegisterPage();
-          $sectLogin.classList.remove("active");
           $sect01.classList.add("active");
-          console.log(document.cookie);
         }
       })
       .catch((err) => alert(err));
@@ -60,12 +57,3 @@ const submitLogin = () => {
 }
 
 submitLogin();
-
-
-//accesstoken 
-const hideRegisterPage = () => {
-  if(accessToken !== null){
-    $sectSignup.classList.remove("acitve");
-    $sectLogin.classList.remove("active");
-  }
-} 
