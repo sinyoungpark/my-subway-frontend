@@ -18,14 +18,13 @@ const submitSignup = () => {
 
     /*request signup api*/
     if(isBoolean){
-      const data = {
+
+      axios.post(`${baseUrl}/customers/signup`,{
         name : name.value,
         email : email.value,
         password : pwd.value
-      }
-
-      axios.post(`${baseUrl}/customers/signup`, JSON.stringify(data))
-      .then((res) => res.json())
+      })
+      .then((res) => res.data)
       .then((data) => {
         if(data.error) alert(data.error);
         else{

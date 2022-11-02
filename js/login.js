@@ -17,20 +17,11 @@ const submitLogin = () => {
 
     /*request login api */
     if(isBoolean){
-      const data = {
+      axios.post(`${baseUrl}/customers/login`,{
         email : email.value,
         password : pwd.value
-      }
-
-      fetch(`${baseUrl}/customers/login`,{
-        method : 'POST',
-        mode : "cors",
-        headers : {
-          "content-type" : "application/json"
-        },
-        body : JSON.stringify(data),
       })
-      .then((res) => res.json())
+      .then((res) => res.data)
       .then((data) => {
         if(data.error) alert(data.error);
         else{
@@ -39,7 +30,7 @@ const submitLogin = () => {
           $sect01.classList.add("active");
         }
       })
-      .catch((err) => alert(err));
+      .catch((e) => console.error(e));
     }
     else{
       alert("이메일, 비밀번호를 입력해주세요.");
