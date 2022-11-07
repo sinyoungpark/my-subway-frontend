@@ -33,7 +33,7 @@ const submitSignup = () => {
           alert(data.result);
         }
       })
-      .catch((error) => alert(error));
+      .catch((error) => alert('회원가입 실패'));
     } else {
       alert("이름, 이메일, 비밀번호를 입력해주세요.")
     }
