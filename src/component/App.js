@@ -1,15 +1,26 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from "./Header";
 import MainContent from './MainContent';
 import Footer from "./Footer";
 import "../css/App.css";
 
+
 const App = () => {
+
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    if(window.sessionStorage.getItem("accesstoken")){
+      setIsLogged(true);
+    }
+  },[])
+
+
   return(
     <div id="wrap">
-      <Header/>
+      {isLogged && (<Header/>)}
       <MainContent/>
-      <Footer/>
+      {isLogged && <Footer/>}
     </div>
   )
 }
