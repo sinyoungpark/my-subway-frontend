@@ -1,5 +1,4 @@
 header {
-  display: none;
   grid-area: a;
   height: 100%;
   font-family: var(--font-primary);
