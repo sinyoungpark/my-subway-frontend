@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, {useState} from "react";
 import "../css/Login.css";
+import {Link, Navigate} from "react-router-dom";
 
 const Login = () => {
   const baseUrl = "http://localhost:8000";
   const [email, setEmail] = useState("");
   const [password, setPw] = useState(""); 
+  const [isLogged, setIsLogged] = useState(false);
 
   const submitLogin = (e) => {
     e.preventDefault();
@@ -18,7 +20,8 @@ const Login = () => {
       .then((data) => {
         if(data.error) alert(data.error);
         else{
-          alert(data.error);
+          window.sessionStorage.setItem("accesstoken", data.accesstoken);
+          setIsLogged(true);
         }
       })
       .catch((e) => console.error(e));
