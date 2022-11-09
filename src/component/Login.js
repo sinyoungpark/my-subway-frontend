@@ -29,19 +29,21 @@ const Login = () => {
     else{
       alert("이메일, 비밀번호를 입력해주세요.");
     }
-
   }
 
   return (
-    <section id="login" class="section">
-      <h1 class="logo">
+    <section id="login" className="section">
+      {
+        isLogged && <Navigate to="/" replace={true}/>
+      }
+      <h1 className="logo">
         <span>MY</span> <span>SUB</span>
         <span>WAY</span>
       </h1>
-      <div class="contents">
-        <section class="left">
-          <p class="main-txt">Log in Your Account</p>
-          <p class="sub-txt">
+      <div className="contents">
+        <section className="left">
+          <p className="main-txt">Log in Your Account</p>
+          <p className="sub-txt">
             Log in to your account so you can continue building and editing your
             onboarding flows.
           </p>
@@ -68,7 +70,7 @@ const Login = () => {
             <input type="submit" value="LOG IN" onClick={submitLogin}/>
           </form>
 
-          <div class="social-login">
+          <div className="social-login">
             <p>Or log in using</p>
             <ul>
               <li>google</li>
@@ -77,13 +79,13 @@ const Login = () => {
             </ul>
           </div>
         </section>
-        <section class="right">
-          <p class="main-txt">Don't Have an Account Yet?</p>
-          <p class="sub-txt">
+        <section className="right">
+          <p className="main-txt">Don't Have an Account Yet?</p>
+          <p className="sub-txt">
             Let's get you all set up so you can start creating your first
             experience
           </p>
-          <input type="button" value="SIGN UP" class="signup_btn" />
+          <Link to="/signup" className="signup_btn">SIGN UP</Link>
         </section>
       </div>
     </section>
