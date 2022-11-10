@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import {Navigate} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-export default function Home(){
-
+export default function Home() {
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
-    if(window.sessionStorage.getItem("accesstoken")){
+    if (window.sessionStorage.getItem("accesstoken")) {
       setIsLogged(true);
     }
-  },[])
+  }, []);
 
-  return(
+  return (
     <div>
+      {/* {!isLogged && <Navigate to="/signup" replace={true} />} */}
       Home
     </div>
-  )
+  );
 }
