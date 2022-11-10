@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/Signup.css";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
@@ -9,6 +9,15 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPW] = useState("");
   const [success, isSuccess] = useState(false);
+
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    if (window.sessionStorage.getItem("accesstoken")) {
+      setIsLogged(true);
+    }
+  }, []);
+
 
   const submitSignup = (e) => {
     e.preventDefault();
@@ -36,6 +45,7 @@ const Signup = () => {
 
   return (
     <section id="signup" className="section">
+      {isLogged && <Navigate to="/" replace={true} />}
       {success && <Navigate to="/login" replace={true} />}
       <h1 className="logo">
         <span>MY</span> <span>SUB</span>
