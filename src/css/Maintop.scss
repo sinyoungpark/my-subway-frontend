@@ -1,0 +1,43 @@
+.main-top{
+  width : 100%;
+  height : 50px;
+  display : flex;
+  justify-content: space-between;
+  padding : 10px 5rem;
+  align-items: center;
+
+  .src-form{
+    display : flex;
+    position : relative;
+
+    label{
+      color : var(--color-grey-2);
+      position : absolute;
+      left : -20px;
+      top : -1px;
+      .search-icon{
+        font-size : 20px;
+      }
+    }
+
+    input[type="text"]{
+      padding-left : 10px;
+      outline : none;
+      border : none;
+    }
+  }
+
+  .logout-btn{
+    outline : none;
+    border : none;
+    background-color : transparent;
+    font-family: var(--font-primary); 
+    cursor : pointer;
+    font-size : 1rem;
+    padding : 10px;
+
+    &:hover{
+      background-color : rgba(0,0,0,0.1);
+    }
+  }
+}
