@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import MainContent from './MainContent';
+import MainContent from "./MainContent";
 import Footer from "./Footer";
 import "../css/App.css";
+import Maintop from "./Maintop";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
-  return(
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    if (window.sessionStorage.getItem("accesstoken")) {
+      setIsLogged(true);
+    }
+  }, []);
+
+  return (
     <div id="wrap">
-      <Header/>
-      <MainContent/>
-      <Footer/>
+      {isLogged && <Header />}
+      {isLogged && <Maintop />}
+      <Outlet />
+      {isLogged && <Footer />}
     </div>
-  )
-}
+  );
+};
 
 export default App;
