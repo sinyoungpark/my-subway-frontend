@@ -34,6 +34,5 @@ div#wrap {
   height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1rem;
-  grid-template-areas: "a b b" "a b b" "a c c";
+  grid-template-areas: "a b b b" "a b b b" "a c c c";
 }/*# sourceMappingURL=App.css.map */
