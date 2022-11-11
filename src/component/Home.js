@@ -3,12 +3,14 @@ import { Navigate } from "react-router-dom";
 import { UserContext } from "./App";
 import "../css/Home.css";
 import axios from "axios";
+import AdSlide from "./AdSlide";
 
 export default function Home() {
   const baseUrl = "http://localhost:8000";
   const [user] = useContext(UserContext);
   const [recipesData, setRecipesData] = useState([]);
   const [rankingsData, setRankingsData] = useState([]);
+  const [adData, setAdData] = useState([]);
 
   const config = {
     headers: {
@@ -19,6 +21,7 @@ export default function Home() {
   useEffect(() => {
     getRecipesData();
     getRakingsData();
+    getAdData();
   }, [user]);
 
   const getRecipesData = () => {
@@ -41,19 +44,29 @@ export default function Home() {
       .catch((error) => console.log(error));
   };
 
+  const getAdData = () => {
+    axios
+      .get(`${baseUrl}/ad`, config)
+      .then((res) => res.data)
+      .then((data) => {
+        setAdData(data.adData);
+      })
+      .catch((error) => console.log(error));
+  };
+
   const HomeComponents = {
     Recipes: function Recipes() {
-      return recipesData.map((recipe) => {
+      return recipesData.map((recipe,idx) => {
         const { menu, menuImg, ingredients, ingredientsImg, id, likes } =
           recipe;
         return (
-          <li className="recipe">
+          <li className="recipe" key={idx.toString()}>
             <p className="menu-name">{menu}</p>
             <img src={menuImg} alt="menuImg" className="menu-img" />
             <ul className="ingredients">
               {ingredients.map((ingredient, idx) => {
                 return (
-                  <li>
+                  <li key={idx.toString()}>
                     <p>{ingredient}</p>
                     <img src={ingredientsImg[idx]} alt="ingredientImg" />
                   </li>
@@ -117,7 +130,7 @@ export default function Home() {
         </ul>
       </section>
 
-      <section className="ad"></section>
+      <section className="ad">{adData&& <AdSlide adData={adData}/>}</section>
     </section>
   );
 }
