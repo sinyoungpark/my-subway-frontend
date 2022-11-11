@@ -26,19 +26,26 @@ const App = () => {
       setLoading(false);
       console.log(user);
     })
-    .catch((error) => alert(error));
+    .catch((error) => console.log(error));
   }, []);
 
-  if(loading) return <div>Loading</div>
+  if(loading) return <div>LOading...</div>
+
+  const logoutHandler = () => {
+    axios.post(`${baseUrl}/customers/logout`)
+    .then((res) => res.data)
+    .then((data) => {
+      setUser({});
+    })
+    .catch(error => console.log(error)); 
+  }
+
 
   return (
     <UserContext.Provider value={[user, setUser]}>
       <div id="wrap">
-        {
-          console.log(user.accesstoken)
-        }
         {user.accesstoken && <Header />}
-        {user.accesstoken && <Maintop />}
+        {user.accesstoken && <Maintop logoutHandler={logoutHandler}/>}
         <Outlet />
         {user.accesstoken && <Footer />}
       </div>
