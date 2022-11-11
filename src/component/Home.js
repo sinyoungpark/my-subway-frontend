@@ -8,6 +8,7 @@ export default function Home() {
   const baseUrl = "http://localhost:8000";
   const [user] = useContext(UserContext);
   const [recipesData, setRecipesData] = useState([]);
+  const [rankingsData, setRankingsData] = useState([]);
 
   const config = {
     headers: {
@@ -17,6 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     getRecipesData();
+    getRakingsData();
   }, [user]);
 
   const getRecipesData = () => {
@@ -25,6 +27,16 @@ export default function Home() {
       .then((res) => res.data)
       .then((data) => {
         setRecipesData(data.data);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const getRakingsData = () => {
+    axios
+      .get(`${baseUrl}/rankings`, config)
+      .then((res) => res.data)
+      .then((data) => {
+        setRankingsData(data.data);
       })
       .catch((error) => console.log(error));
   };
@@ -53,6 +65,41 @@ export default function Home() {
         );
       });
     },
+    Rankings: function Rankings() {
+      return rankingsData.map((item, idx) => {
+        const {
+          writer,
+          writerImg,
+          title,
+          menuImg,
+          ingredientsData,
+          ingredientsImg,
+          menu,
+          likes,
+        } = item;
+
+        return (
+          <li className="item">
+            <span className="num">{idx}</span>
+            <p className="recipe-name">{title}</p>
+            <img src={menuImg} alt="menu-img" className="menu-img" />
+            <ul className="ingredients">
+              {ingredientsData.map((ingredient, idx) => {
+                return (
+                  <li>
+                    <p>{ingredient}</p>
+                    <img src={ingredientsImg[idx]} alt="ingredients" />
+                  </li>
+                );
+              })}
+              <p className="writer-profile">{writer}</p>
+              <img src={writerImg} alt="글쓴이" />
+              <p className="likes">{likes}</p>
+            </ul>
+          </li>
+        );
+      });
+    },
   };
 
   return (
@@ -60,16 +107,14 @@ export default function Home() {
       {!user.accesstoken && <Navigate to="/login" replace={true} />}
       <section className="my-recipes">
         <h2 className="sub-tlt">내 레시피</h2>
-        <ul className="recipes">
-          {
-            recipesData && <HomeComponents.Recipes/>
-          }        
-        </ul>
+        <ul className="recipes">{recipesData && <HomeComponents.Recipes />}</ul>
       </section>
 
       <section className="ranking">
         <h2 className="sub-tlt">랭킹</h2>
-        <ul className="ranking"></ul>
+        <ul className="rankings">
+          {rankingsData && <HomeComponents.Rankings />}
+        </ul>
       </section>
 
       <section className="ad"></section>
