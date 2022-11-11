@@ -92,14 +92,14 @@ export default function Home() {
         } = item;
 
         return (
-          <li className="item">
+          <li className="item" key={idx.toString()}>
             <span className="num">{idx}</span>
             <p className="recipe-name">{title}</p>
             <img src={menuImg} alt="menu-img" className="menu-img" />
             <ul className="ingredients">
               {ingredientsData.map((ingredient, idx) => {
                 return (
-                  <li>
+                  <li key={idx.toString()}>
                     <p>{ingredient}</p>
                     <img src={ingredientsImg[idx]} alt="ingredients" />
                   </li>
