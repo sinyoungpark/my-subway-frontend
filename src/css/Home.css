@@ -143,4 +143,53 @@
   border-radius: 20px;
   margin-right: 100px;
   height: 600px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+#home section.ad ul.ad-slides {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#home section.ad ul.ad-slides li {
+  width: 100%;
+  height: 100%;
+  padding-top: 1rem;
+}
+#home section.ad ul.ad-slides li img {
+  width: 100%;
+  height: 100%;
+}
+#home section.ad ul.circles {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 100%;
+  align-items: flex-end;
+  padding-bottom: 1.3rem;
+  position: absolute;
+}
+#home section.ad ul.circles li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 1rem;
+  border: 1px solid var(--color-green-1);
+}
+#home section.ad ul.circles li.active {
+  background-color: var(--color-green-1);
+}
+#home section.ad ul.circles li:nth-child(1) {
+  display: none;
+}
+#home section.ad ul.circles li:last-child {
+  display: none;
 }/*# sourceMappingURL=Home.css.map */
