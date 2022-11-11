@@ -1,0 +1,71 @@
+#home {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  grid-template-areas: "a a a" "b b c" "b b c";
+  overflow: hidden;
+  overflow-y: visible;
+}
+#home section.my-recipes {
+  grid-area: a;
+  box-shadow: 1px 0.1rem 1rem rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  margin-bottom: 0px;
+}
+#home section.my-recipes h2.sub-tlt {
+  font-size: 1.2rem;
+  padding-bottom: 2rem;
+}
+#home section.my-recipes ul.recipes {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+#home section.my-recipes ul.recipes .recipe {
+  border: 1px solid var(--color-yellow-1);
+  border-radius: 10px;
+  height: 13rem;
+  padding-top: 7px;
+  width: 500px;
+  text-align: center;
+  margin-left: 1rem;
+}
+#home section.my-recipes ul.recipes .recipe p.menu-name {
+  height: 20px;
+  overflow: hidden;
+}
+#home section.my-recipes ul.recipes .recipe img.menu-img {
+  width: 150px;
+  height: 90px;
+}
+#home section.my-recipes ul.recipes .recipe ul.ingredients {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#home section.my-recipes ul.recipes .recipe ul.ingredients li {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  justify-content: center;
+  align-items: center;
+}
+#home section.my-recipes ul.recipes .recipe ul.ingredients li img {
+  width: 60px;
+}
+#home section.ranking {
+  grid-area: b;
+  box-shadow: 1px 0.1rem 1rem rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  margin-left: 100px;
+}
+#home section.ad {
+  grid-area: c;
+  box-shadow: 1px 0.1rem 1rem rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  margin-right: 100px;
+  height: 600px;
+}/*# sourceMappingURL=Home.css.map */
