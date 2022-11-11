@@ -19,12 +19,10 @@ const App = () => {
     axios.post(`${baseUrl}/customers/refresh_token`)
     .then((res) => res.data)
     .then((data) => {
-      console.log(data);
       setUser({
         accesstoken : data.accesstoken
       });
       setLoading(false);
-      console.log(user);
     })
     .catch((error) => console.log(error));
   }, []);
