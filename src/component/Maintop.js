@@ -8,7 +8,7 @@ const Maintop = ({logoutHandler}) => {
   return (
     <div className="main-top inner">
       <form action="" className="src-form">
-        <label for="src-value">
+        <label htmlFor="src-value">
           <SearchIcon className="search-icon"/>
         </label>
         <input
