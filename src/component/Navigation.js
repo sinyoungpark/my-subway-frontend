@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 export default function Navigation() {
   const makeAccordion = (e) => {
     e.preventDefault();
-    e.target.classList.toggle("active");
+    e.currentTarget.classList.toggle("active");
 
-    const panel = e.target.children[0];
+    const panel = e.currentTarget.children[0];
 
     panel.style.maxHeight
       ? (panel.style.maxHeight = null)
@@ -16,7 +16,7 @@ export default function Navigation() {
   return (
     <nav className="nav">
       <ul id="gnb">
-        <li onClick={makeAccordion}>
+        <li onClick={(e) => makeAccordion(e)}>
           메뉴소개
           <ul className="gnb-sub-wrap">
             <li>
@@ -28,7 +28,7 @@ export default function Navigation() {
           </ul>
         </li>
         <li>주문연습</li>
-        <li onClick={makeAccordion}>
+        <li onClick={(e) => makeAccordion(e)}>
           랭킹/게시판
           <ul className="gnb-sub-wrap">
             <li>
