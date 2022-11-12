@@ -8,8 +8,6 @@ import Home from "./component/Home";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
 import Menu from "./component/Menu";
-import Sandwich from "./component/Sandwich";
-import Ingredients from "./component/Ingredients";
 
 const router = createBrowserRouter([
   {
@@ -31,16 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "menu",
-        children : [
-          {
-            path : "sandwich",
-            element : <Sandwich/>
-          },
-          {
-            path : "ingredients",
-            element : <Ingredients/>
-          }
-        ]
+        element: <Menu />,
       },
     ],
   },
