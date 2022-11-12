@@ -1,0 +1,61 @@
+#sandwich {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: visible;
+  font-family: var(--font-primary);
+}
+#sandwich section.main-visual {
+  height: 30%;
+  background: url("../img/img_visual_sandwich.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#sandwich section.main-visual h2.main-tlt {
+  font-size: 50px;
+  color: #fff;
+}
+#sandwich section.main-visual h2.main-tlt p {
+  font-size: 18px;
+}
+#sandwich section.main-contents {
+  padding: 2rem 5rem;
+}
+#sandwich section.main-contents ul.category {
+  display: flex;
+  align-items: center;
+}
+#sandwich section.main-contents ul.category li {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+#sandwich section.main-contents ul.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+#sandwich section.main-contents ul.items li {
+  box-shadow: 0px 6px 18px -4px rgba(0, 0, 0, 0.25);
+  flex-basis: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 30px;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+}
+#sandwich section.main-contents ul.items li .sandwich-img {
+  width: 260px;
+  height: 170px;
+}
+#sandwich section.main-contents ul.items li .sandwich-name {
+  font-size: 20px;
+}
+#sandwich section.main-contents ul.items li .kcal {
+  padding-top: 5px;
+  font-size: 18px;
+  color: var(--color-yellow-1);
+}/*# sourceMappingURL=Sandwich.css.map */
