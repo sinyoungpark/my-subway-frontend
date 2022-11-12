@@ -5,16 +5,6 @@ import Navigation from "./Navigation";
 
 const Header = () => {
 
-  const makeAccordion = (e) => {
-      e.preventDefault();
-      e.target.classList.toggle("active");
-
-      const panel = e.target.children[0];
-  
-      panel.style.maxHeight ? panel.style.maxHeight = null : panel.style.maxHeight = panel.scrollHeight + "px";
-  }
-
-
   return (
     <header>
       <h1 className="logo">
