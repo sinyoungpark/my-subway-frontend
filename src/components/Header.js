@@ -1,6 +1,6 @@
 import React from "react";
 import profileImg from "../img/user-profile.jpg";
-import "../css/header.css";
+import "../styles/header.scss";
 import Navigation from "./Navigation";
 
 const Header = () => {

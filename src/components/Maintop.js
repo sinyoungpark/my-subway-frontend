@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
-import "../css/Maintop.css";
+import "../styles/Maintop.scss";
 import axios from "axios";
 
 const Maintop = ({logoutHandler}) => {

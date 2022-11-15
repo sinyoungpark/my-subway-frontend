@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "../css/Sandwich.css";
+import "../styles/Sandwich.scss";
 
 export default function Sandwich() {
   const baseUrl = "http://localhost:8000";

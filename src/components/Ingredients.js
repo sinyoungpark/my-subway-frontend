@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "../css/Ingredients.css";
+import "../styles/Ingredients.scss";
 
 export default function Ingredients() {
   const baseUrl = "http://localhost:8000";
