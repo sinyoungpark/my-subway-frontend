@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { UserContext } from "./App";
+import { UserContext } from "../App";
 import "../styles/Home.scss";
 import axios from "axios";
 import AdSlide from "./AdSlide";

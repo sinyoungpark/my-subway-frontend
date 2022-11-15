@@ -2,7 +2,7 @@ import axios from "axios";
 import React, {useContext, useState} from "react";
 import "../styles/Login.scss";
 import {Link, Navigate} from "react-router-dom";
-import { UserContext } from "./App";
+import { UserContext } from "../App";
 
 const Login = () => {
   const baseUrl = "http://localhost:8000";

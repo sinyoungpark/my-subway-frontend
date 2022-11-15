@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import "../styles/App.scss";
-import Maintop from "./Maintop";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import "./styles/App.scss";
+import Maintop from "./components/Maintop";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 
