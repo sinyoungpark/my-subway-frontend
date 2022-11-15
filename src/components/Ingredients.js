@@ -16,6 +16,17 @@ export default function Ingredients() {
       .catch((err) => console.log(err));
   });
 
+  const ingredientElements = ingredientsData.map((item) => {
+    const { name, kcal, img, Type } = item;
+    return (
+      <li>
+        <img src={img} alt="" className="ingredient-img" />
+        <p className="ingredient-name">{name}</p>
+        <p className="kcal">{kcal} kcal</p>
+      </li>
+    );
+  });
+
   return (
     <section className="section" id="ingredients">
       <section className="main-visual">
@@ -33,19 +44,7 @@ export default function Ingredients() {
           <li>치즈</li>
           <li>소스</li>
         </ul>
-        <ul className="items">
-          {ingredientsData &&
-            ingredientsData.map((item) => {
-              const { name, kcal, img, Type } = item;
-              return (
-                <li>
-                  <img src={img} alt="" className="ingredient-img" />
-                  <p className="ingredient-name">{name}</p>
-                  <p className="kcal">{kcal} kcal</p>
-                </li>
-              );
-            })}
-        </ul>
+        <ul className="items">{ingredientElements}</ul>
       </section>
     </section>
   );
