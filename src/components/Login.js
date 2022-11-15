@@ -1,13 +1,14 @@
 import axios from "axios";
-import React, {useState} from "react";
-import "../css/Login.css";
+import React, {useContext, useState} from "react";
+import "../styles/Login.scss";
 import {Link, Navigate} from "react-router-dom";
+import { UserContext } from "../App";
 
 const Login = () => {
   const baseUrl = "http://localhost:8000";
+  const [user, setUser] = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPw] = useState(""); 
-  const [isLogged, setIsLogged] = useState(false);
 
   const submitLogin = (e) => {
     e.preventDefault();
@@ -20,8 +21,7 @@ const Login = () => {
       .then((data) => {
         if(data.error) alert(data.error);
         else{
-          window.sessionStorage.setItem("accesstoken", data.accesstoken);
-          setIsLogged(true);
+          setUser(data.accesstoken);
         }
       })
       .catch((e) => console.error(e));
@@ -34,7 +34,7 @@ const Login = () => {
   return (
     <section id="login" className="section">
       {
-        isLogged && <Navigate to="/" replace={true}/>
+        user.accesstoken && <Navigate to="/" replace={true}/>
       }
       <h1 className="logo">
         <span>MY</span> <span>SUB</span>
@@ -49,7 +49,7 @@ const Login = () => {
           </p>
 
           <form>
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -58,7 +58,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"

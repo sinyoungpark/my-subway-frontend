@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import "../css/App.css";
-import Maintop from "./Maintop";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import "./styles/App.scss";
+import Maintop from "./components/Maintop";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 
@@ -27,7 +27,7 @@ const App = () => {
     .catch((error) => console.log(error));
   }, []);
 
-  if(loading) return <div>LOading...</div>
+  // if(loading) return <div>LOading...</div>
 
   const logoutHandler = () => {
     axios.post(`${baseUrl}/customers/logout`)

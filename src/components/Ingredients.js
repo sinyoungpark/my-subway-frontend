@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "../css/Ingredients.css";
+import "../styles/Ingredients.scss";
 
 export default function Ingredients() {
   const baseUrl = "http://localhost:8000";
@@ -14,6 +14,17 @@ export default function Ingredients() {
         setIngredientsData(data.ingredientsData);
       })
       .catch((err) => console.log(err));
+  });
+
+  const ingredientElements = ingredientsData.map((item) => {
+    const { name, kcal, img, Type } = item;
+    return (
+      <li>
+        <img src={img} alt="" className="ingredient-img" />
+        <p className="ingredient-name">{name}</p>
+        <p className="kcal">{kcal} kcal</p>
+      </li>
+    );
   });
 
   return (
@@ -33,19 +44,7 @@ export default function Ingredients() {
           <li>치즈</li>
           <li>소스</li>
         </ul>
-        <ul className="items">
-          {ingredientsData &&
-            ingredientsData.map((item) => {
-              const { name, kcal, img, Type } = item;
-              return (
-                <li>
-                  <img src={img} alt="" className="ingredient-img" />
-                  <p className="ingredient-name">{name}</p>
-                  <p className="kcal">{kcal} kcal</p>
-                </li>
-              );
-            })}
-        </ul>
+        <ul className="items">{ingredientElements}</ul>
       </section>
     </section>
   );

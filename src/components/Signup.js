@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../css/Signup.css";
+import "../styles/Signup.scss";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 
@@ -68,7 +68,7 @@ const Signup = () => {
             onboarding experience.
           </p>
           <form>
-            <label for="name">Name</label>
+            <label htmlFor="name">Name</label>
             <input
               type="text"
               name="name"
@@ -79,7 +79,7 @@ const Signup = () => {
               }}
             />
 
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -90,7 +90,7 @@ const Signup = () => {
               }}
             />
 
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"
