@@ -11,6 +11,7 @@ import Menu from "./components/Menu";
 import Sandwich from "./components/Sandwich";
 import Ingredients from "./components/Ingredients";
 import Ranking from "./components/Ranking";
+import Board from "./components/Board";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         path: "ranking",
         element: <Ranking />,
       },
+      {
+        path : "board",
+        element : <Board/>
+      }
     ],
   },
 ]);
