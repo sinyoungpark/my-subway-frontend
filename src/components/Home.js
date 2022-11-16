@@ -4,6 +4,7 @@ import { UserContext } from "../App";
 import "../styles/Home.scss";
 import axios from "axios";
 import AdSlide from "./AdSlide";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 export default function Home() {
   const baseUrl = "http://localhost:8000";
@@ -11,6 +12,7 @@ export default function Home() {
   const [recipesData, setRecipesData] = useState([]);
   const [rankingsData, setRankingsData] = useState([]);
   const [adData, setAdData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   const config = {
     headers: {
@@ -22,7 +24,7 @@ export default function Home() {
     getRecipesData();
     getRakingsData();
     getAdData();
-  }, [user]);
+  }, [user, refresh]);
 
   const getRecipesData = () => {
     axios
@@ -54,9 +56,22 @@ export default function Home() {
       .catch((error) => console.log(error));
   };
 
+  const likesBtnHandler = (e) => {
+    e.preventDefault();
+    const likes = Number(e.currentTarget.dataset.likes) + 1;
+    const postId = Number(e.currentTarget.dataset.id);
+    axios.patch(`${baseUrl}/recipes`,{
+      postId,
+      likes
+    }, config)
+    .then((res) => res.data)
+    .then((data) => setRefresh(!refresh))
+    .catch((error) => console.error(error));
+  }
+
   const HomeComponents = {
     Recipes: function Recipes() {
-      return recipesData.map((recipe,idx) => {
+      return recipesData.map((recipe, idx) => {
         const { menu, menuImg, ingredients, ingredientsImg, id, likes } =
           recipe;
         return (
@@ -73,7 +88,10 @@ export default function Home() {
                 );
               })}
             </ul>
-            <p className="likes">{likes}</p>
+            <p className="likes" onClick={(e) => likesBtnHandler(e)} data-likes={likes} data-id={id}>
+              <ThumbUpIcon className="likes-icon" />
+              좋아요 {likes}개
+            </p>
           </li>
         );
       });
@@ -88,12 +106,13 @@ export default function Home() {
           ingredientsData,
           ingredientsImg,
           menu,
+          id,
           likes,
         } = item;
 
         return (
           <li className="item" key={idx.toString()}>
-            <span className="num">{idx}</span>
+            <span className="num">{idx + 1}</span>
             <p className="recipe-name">{title}</p>
             <img src={menuImg} alt="menu-img" className="menu-img" />
             <ul className="ingredients">
@@ -105,9 +124,14 @@ export default function Home() {
                   </li>
                 );
               })}
-              <p className="writer-profile">{writer}</p>
-              <img src={writerImg} alt="글쓴이" />
-              <p className="likes">{likes}</p>
+              <div className="writer-profile">
+                <p>{writer}</p>
+                <img src={writerImg} alt="글쓴이" />
+              </div>
+              <p className="likes" onClick={(e) => likesBtnHandler(e)} data-likes={likes} data-id={id}>
+                <ThumbUpIcon className="likes-icon" />
+                좋아요 {likes}개
+              </p>
             </ul>
           </li>
         );
@@ -130,7 +154,7 @@ export default function Home() {
         </ul>
       </section>
 
-      <section className="ad">{adData&& <AdSlide adData={adData}/>}</section>
+      <section className="ad">{adData && <AdSlide adData={adData} />}</section>
     </section>
   );
 }
