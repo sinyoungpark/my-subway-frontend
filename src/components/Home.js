@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { UserContext } from "../App";
 import "../styles/Home.scss";
 import axios from "axios";
-import AdSlide from "./AdSlide";
+import SlideCard from "./SlideCard";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 export default function Home() {
@@ -60,14 +60,19 @@ export default function Home() {
     e.preventDefault();
     const likes = Number(e.currentTarget.dataset.likes) + 1;
     const postId = Number(e.currentTarget.dataset.id);
-    axios.patch(`${baseUrl}/recipes`,{
-      postId,
-      likes
-    }, config)
-    .then((res) => res.data)
-    .then((data) => setRefresh(!refresh))
-    .catch((error) => console.error(error));
-  }
+    axios
+      .patch(
+        `${baseUrl}/recipes`,
+        {
+          postId,
+          likes,
+        },
+        config
+      )
+      .then((res) => res.data)
+      .then((data) => setRefresh(!refresh))
+      .catch((error) => console.error(error));
+  };
 
   const HomeComponents = {
     Recipes: function Recipes() {
@@ -88,7 +93,12 @@ export default function Home() {
                 );
               })}
             </ul>
-            <p className="likes" onClick={(e) => likesBtnHandler(e)} data-likes={likes} data-id={id}>
+            <p
+              className="likes"
+              onClick={(e) => likesBtnHandler(e)}
+              data-likes={likes}
+              data-id={id}
+            >
               <ThumbUpIcon className="likes-icon" />
               좋아요 {likes}개
             </p>
@@ -128,7 +138,12 @@ export default function Home() {
                 <p>{writer}</p>
                 <img src={writerImg} alt="글쓴이" />
               </div>
-              <p className="likes" onClick={(e) => likesBtnHandler(e)} data-likes={likes} data-id={id}>
+              <p
+                className="likes"
+                onClick={(e) => likesBtnHandler(e)}
+                data-likes={likes}
+                data-id={id}
+              >
                 <ThumbUpIcon className="likes-icon" />
                 좋아요 {likes}개
               </p>
@@ -154,7 +169,17 @@ export default function Home() {
         </ul>
       </section>
 
-      <section className="ad">{adData && <AdSlide adData={adData} />}</section>
+      <section className="ad">
+        <ul className="ad-slides">
+          {adData.length && (
+            <SlideCard adData={adData[adData.length - 1]} key={adData.length} />
+          )}
+          {adData.length &&
+            adData.map((ad, idx) => <SlideCard adData={ad} key={idx + 1} />)}
+          {adData.length && <SlideCard adData={adData[0]} key={0} />}
+        </ul>
+        <ul className="cicles"></ul>
+      </section>
     </section>
   );
 }
