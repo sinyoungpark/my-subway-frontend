@@ -116,7 +116,7 @@ export default function Home() {
   };
 
   return (
-    <section className="section" id="home">
+    <section className="section inner" id="home">
       {!user.accesstoken && <Navigate to="/login" replace={true} />}
       <section className="my-recipes">
         <h2 className="sub-tlt">내 레시피</h2>

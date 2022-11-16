@@ -13,8 +13,9 @@
     label{
       color : var(--color-grey-2);
       position : absolute;
-      left : -20px;
-      top : -1px;
+      top : 56%;
+      left :10px;
+      transform: translateY(-50%);
       .search-icon{
         font-size : 20px;
       }
@@ -24,6 +25,11 @@
       padding-left : 10px;
       outline : none;
       border : none;
+      background-color : #F5F5F5;
+      height : 40px;
+      width  :250px;
+      border-radius: 10px;
+      padding : 0 35px;
     }
   }
 
