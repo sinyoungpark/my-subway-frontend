@@ -21,16 +21,18 @@ const Login = () => {
       .then((data) => {
         if(data.error) alert(data.error);
         else{
-          setUser(data.accesstoken);
+          setUser({
+            accesstoken : data.accesstoken
+          });
         }
       })
       .catch((e) => console.error(e));
+
     }
     else{
       alert("이메일, 비밀번호를 입력해주세요.");
     }
   }
-
   return (
     <section id="login" className="section">
       {
