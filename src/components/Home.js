@@ -171,13 +171,14 @@ export default function Home() {
 
       <section className="ad">
         <ul className="ad-slides">
-          <SlideCard adData={adData[adData.length - 1]} key={adData.length} />
-          {adData &&
+          {adData.length && (
+            <SlideCard adData={adData[adData.length - 1]} key={adData.length} />
+          )}
+          {adData.length &&
             adData.map((ad, idx) => <SlideCard adData={ad} key={idx + 1} />)}
-          <SlideCard adData={adData[0]} key={0} />
+          {adData.length && <SlideCard adData={adData[0]} key={0} />}
         </ul>
-        <ul className="cicles">
-        </ul>
+        <ul className="cicles"></ul>
       </section>
     </section>
   );
