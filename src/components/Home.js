@@ -58,15 +58,10 @@ export default function Home() {
 
   const likesBtnHandler = (e) => {
     e.preventDefault();
-    const likes = Number(e.currentTarget.dataset.likes) + 1;
-    const postId = Number(e.currentTarget.dataset.id);
+    const postId = e.currentTarget.dataset.id;
     axios
       .patch(
-        `${baseUrl}/recipes`,
-        {
-          postId,
-          likes,
-        },
+        `${baseUrl}/recipes?postId=${postId}`,{},
         config
       )
       .then((res) => res.data)
@@ -77,18 +72,18 @@ export default function Home() {
   const HomeComponents = {
     Recipes: function Recipes() {
       return recipesData.map((recipe, idx) => {
-        const { menu, menuImg, ingredients, ingredientsImg, id, likes } =
+        const {id, Menu, Ingredients, Likes} =
           recipe;
         return (
           <li className="recipe" key={idx.toString()}>
-            <p className="menu-name">{menu}</p>
-            <img src={menuImg} alt="menuImg" className="menu-img" />
+            <p className="menu-name">{Menu.name}</p>
+            <img src={Menu.img} alt="menuImg" className="menu-img" />
             <ul className="ingredients">
-              {ingredients.map((ingredient, idx) => {
+              {Ingredients.map((ingredient, idx) => {
                 return (
                   <li key={idx.toString()}>
-                    <p>{ingredient}</p>
-                    <img src={ingredientsImg[idx]} alt="ingredientImg" />
+                    <p>{ingredient.name}</p>
+                    <img src={Ingredients[idx].img} alt="ingredientImg" />
                   </li>
                 );
               })}
@@ -96,11 +91,10 @@ export default function Home() {
             <p
               className="likes"
               onClick={(e) => likesBtnHandler(e)}
-              data-likes={likes}
               data-id={id}
             >
               <ThumbUpIcon className="likes-icon" />
-              좋아요 {likes}개
+              좋아요 {Likes.length} 개
             </p>
           </li>
         );
