@@ -1,23 +1,51 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import "../styles/Ranking.scss";
 import { Link } from "react-router-dom";
+import { UserContext } from "../App";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 export default function Ranking() {
+  const [user] = useContext(UserContext);
   const baseUrl = "http://localhost:8000";
   const [rankingData, setRankingsData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+
+  const config = {
+    headers: {
+      authorization: `Bearer ${user.accesstoken}`,
+    },
+  };
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/rankings`)
+      .get(`${baseUrl}/rankings`, config)
       .then((res) => res.data)
       .then((data) => {
+        console.log(data);
         setRankingsData(data.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [refresh]);
 
+  const likesBtnHandler = (e) => {
+    e.preventDefault();
+    const likes = Number(e.currentTarget.dataset.likes) + 1;
+    const postId = Number(e.currentTarget.dataset.id);
+    axios
+      .patch(
+        `${baseUrl}/recipes`,
+        {
+          postId,
+          likes,
+        },
+        config
+      )
+      .then((res) => res.data)
+      .then((data) => setRefresh(!refresh))
+      .catch((error) => console.error(error));
+  };
   return (
     <section className="section inner" id="ranking">
       <div className="top">
@@ -30,36 +58,37 @@ export default function Ranking() {
         </Link>
       </div>
       <ul className="rankings">
-        {rankingData.length &&
+        {rankingData &&
           rankingData.map((item, idx) => {
-            const {
-              writer,
-              writerImg,
-              title,
-              menuImg,
-              ingredientsData,
-              ingredientsImg,
-              menu,
-              likes,
-            } = item;
+            const { title, id, likes, User, Menu, Ingredients } = item;
 
             return (
               <li className="item" key={idx.toString()}>
                 <span className="num">{idx}</span>
                 <p className="recipe-name">{title}</p>
-                <img src={menuImg} alt="menu-img" className="menu-img" />
+                <img src={Menu.img} alt="menu-img" className="menu-img" />
                 <ul className="ingredients">
-                  {ingredientsData.map((ingredient, idx) => {
+                  {Ingredients.map((ingredient, idx) => {
                     return (
                       <li key={idx.toString()}>
-                        <p>{ingredient}</p>
-                        <img src={ingredientsImg[idx]} alt="ingredients" />
+                        <p>{ingredient.name}</p>
+                        <img src={Ingredients[idx].img} alt="ingredients" />
                       </li>
                     );
                   })}
-                  <p className="writer-profile">{writer}</p>
-                  <img src={writerImg} alt="글쓴이" />
-                  <p className="likes">{likes}</p>
+                  <div className="writer-profile">
+                    <p>{User.name}</p>
+                    <img src={User.profileImg} alt="글쓴이" />
+                  </div>
+                  <p
+                    className="likes"
+                    onClick={(e) => likesBtnHandler(e)}
+                    data-likes={likes}
+                    data-id={id}
+                  >
+                    <ThumbUpIcon className="likes-icon" />
+                    좋아요 {likes} 개
+                  </p>
                 </ul>
               </li>
             );

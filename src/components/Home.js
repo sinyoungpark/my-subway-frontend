@@ -102,35 +102,25 @@ export default function Home() {
     },
     Rankings: function Rankings() {
       return rankingsData.map((item, idx) => {
-        const {
-          writer,
-          writerImg,
-          title,
-          menuImg,
-          ingredientsData,
-          ingredientsImg,
-          menu,
-          id,
-          likes,
-        } = item;
+        const { title, id, likes, User, Menu, Ingredients } = item;
 
         return (
           <li className="item" key={idx.toString()}>
             <span className="num">{idx + 1}</span>
             <p className="recipe-name">{title}</p>
-            <img src={menuImg} alt="menu-img" className="menu-img" />
+            <img src={Menu.img} alt="menu-img" className="menu-img" />
             <ul className="ingredients">
-              {ingredientsData.map((ingredient, idx) => {
+              {Ingredients.map((ingredient, idx) => {
                 return (
                   <li key={idx.toString()}>
-                    <p>{ingredient}</p>
-                    <img src={ingredientsImg[idx]} alt="ingredients" />
+                    <p>{ingredient.name}</p>
+                    <img src={Ingredients[idx].img} alt="ingredients" />
                   </li>
                 );
               })}
               <div className="writer-profile">
-                <p>{writer}</p>
-                <img src={writerImg} alt="글쓴이" />
+                <p>{User.name}</p>
+                <img src={User.profileImg} alt="글쓴이" />
               </div>
               <p
                 className="likes"
