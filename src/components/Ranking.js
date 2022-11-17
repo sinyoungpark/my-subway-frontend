@@ -31,17 +31,9 @@ export default function Ranking() {
 
   const likesBtnHandler = (e) => {
     e.preventDefault();
-    const likes = Number(e.currentTarget.dataset.likes) + 1;
-    const postId = Number(e.currentTarget.dataset.id);
+    const postId = e.currentTarget.dataset.id;
     axios
-      .patch(
-        `${baseUrl}/recipes`,
-        {
-          postId,
-          likes,
-        },
-        config
-      )
+      .patch(`${baseUrl}/recipes?postId=${postId}`, {}, config)
       .then((res) => res.data)
       .then((data) => setRefresh(!refresh))
       .catch((error) => console.error(error));
@@ -60,7 +52,7 @@ export default function Ranking() {
       <ul className="rankings">
         {rankingData &&
           rankingData.map((item, idx) => {
-            const { title, id, likes, User, Menu, Ingredients } = item;
+            const { title, id, Likes, User, Menu, Ingredients } = item;
 
             return (
               <li className="item" key={idx.toString()}>
@@ -83,11 +75,10 @@ export default function Ranking() {
                   <p
                     className="likes"
                     onClick={(e) => likesBtnHandler(e)}
-                    data-likes={likes}
                     data-id={id}
                   >
                     <ThumbUpIcon className="likes-icon" />
-                    좋아요 {likes} 개
+                    좋아요 {Likes.length} 개
                   </p>
                 </ul>
               </li>
