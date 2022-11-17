@@ -102,7 +102,7 @@ export default function Home() {
     },
     Rankings: function Rankings() {
       return rankingsData.map((item, idx) => {
-        const { title, id, likes, User, Menu, Ingredients } = item;
+        const { title, id, Likes, User, Menu, Ingredients } = item;
 
         return (
           <li className="item" key={idx.toString()}>
@@ -125,11 +125,10 @@ export default function Home() {
               <p
                 className="likes"
                 onClick={(e) => likesBtnHandler(e)}
-                data-likes={likes}
                 data-id={id}
               >
                 <ThumbUpIcon className="likes-icon" />
-                좋아요 {likes}개
+                좋아요 {Likes.length}개
               </p>
             </ul>
           </li>
