@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../App";
 import "../styles/Home.scss";
@@ -13,7 +19,12 @@ export default function Home() {
   const [recipesData, setRecipesData] = useState([]);
   const [rankingsData, setRankingsData] = useState([]);
   const [adData, setAdData] = useState([]);
-  const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(true);
+
+  //슬라이드를 위한 변수
+  const [curIdx, setCurIdx] = useState(1);
+  const adListRef = useRef(null);
+  const adEl = useRef(null);
   const [openDel, setOpenDel] = useState(false);
 
   const config = {
@@ -23,10 +34,20 @@ export default function Home() {
   };
 
   useEffect(() => {
-    getRecipesData();
-    getRakingsData();
-    getAdData();
-  }, [user, refresh]);
+    if(refresh){
+      getRecipesData();
+      getRakingsData();
+      getAdData();
+      setRefresh(false);
+    }
+    slideTimer();
+    if (adEl.current !== null) {
+      adListRef.current.style.left = `-${
+        adEl.current.clientWidth * curIdx
+      }px`;
+    }
+
+  }, [user, refresh, curIdx]);
 
   const getRecipesData = () => {
     axios
@@ -78,6 +99,18 @@ export default function Home() {
       .then((data) => setRefresh(!refresh))
       .catch((error) => console.error(error));
   };
+
+  // 슬라이드
+  const slideTimer = () => 
+    setTimeout(() => {
+      if (curIdx < adData.length) setCurIdx(curIdx + 1);
+      else {
+        setCurIdx(1);
+      }
+    }, 3000);
+
+
+
 
   const HomeComponents = {
     Recipes: function Recipes() {
@@ -160,6 +193,7 @@ export default function Home() {
     },
   };
 
+
   return (
     <section className="section inner" id="home">
       {!user.accesstoken && <Navigate to="/login" replace={true} />}
@@ -176,15 +210,26 @@ export default function Home() {
       </section>
 
       <section className="ad">
-        <ul className="ad-slides">
+        <ul className="ad-slides" ref={adListRef}>
           {adData.length && (
-            <SlideCard adData={adData[adData.length - 1]} key={adData.length} />
+            <SlideCard
+              adData={adData[adData.length - 1]}
+              key={adData.length}
+              ref={adEl}
+            />
           )}
           {adData.length &&
             adData.map((ad, idx) => <SlideCard adData={ad} key={idx + 1} />)}
           {adData.length && <SlideCard adData={adData[0]} key={0} />}
         </ul>
-        <ul className="cicles"></ul>
+        <ul className="circles">
+          <li></li>
+          {adData.length &&
+            adData.map((ad, idx) => (
+              <li className={idx + 1 === curIdx ? "active" : null} key={idx+1}></li>
+            ))}
+          <li></li>
+        </ul>
       </section>
     </section>
   );
