@@ -11,6 +11,7 @@ import "../styles/Home.scss";
 import axios from "axios";
 import SlideCard from "./SlideCard";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function Home() {
   const baseUrl = "http://localhost:8000";
@@ -24,6 +25,7 @@ export default function Home() {
   const [curIdx, setCurIdx] = useState(1);
   const adListRef = useRef(null);
   const adEl = useRef(null);
+  const [openDel, setOpenDel] = useState(false);
 
   const config = {
     headers: {
@@ -87,6 +89,17 @@ export default function Home() {
       .catch((error) => console.error(error));
   };
 
+  const deleteRecipes = (e) => {
+    e.preventDefault();
+    const postId = e.currentTarget.dataset.id;
+    console.log(config);
+    axios
+      .delete(`${baseUrl}/recipes?postId=${postId}`, config)
+      .then((res) => res.data)
+      .then((data) => setRefresh(!refresh))
+      .catch((error) => console.error(error));
+  };
+
   // 슬라이드
   const slideTimer = () => 
     setTimeout(() => {
@@ -125,6 +138,20 @@ export default function Home() {
               <ThumbUpIcon className="likes-icon" />
               좋아요 {Likes.length} 개
             </p>
+            <div className="container">
+              <div className="circles" onClick={(e) => setOpenDel(!openDel)}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <button
+                className={openDel ? 'delete-btn active' : 'delete-btn'}
+                data-id={id}
+                onClick={(e) => deleteRecipes(e)}
+              >
+                <DeleteForeverIcon className="del-icon"/>삭제하기
+              </button>
+            </div>
           </li>
         );
       });
