@@ -5,6 +5,7 @@ import "../styles/Home.scss";
 import axios from "axios";
 import SlideCard from "./SlideCard";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function Home() {
   const baseUrl = "http://localhost:8000";
@@ -13,6 +14,7 @@ export default function Home() {
   const [rankingsData, setRankingsData] = useState([]);
   const [adData, setAdData] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [openDel, setOpenDel] = useState(false);
 
   const config = {
     headers: {
@@ -60,10 +62,18 @@ export default function Home() {
     e.preventDefault();
     const postId = e.currentTarget.dataset.id;
     axios
-      .patch(
-        `${baseUrl}/recipes?postId=${postId}`,{},
-        config
-      )
+      .patch(`${baseUrl}/recipes?postId=${postId}`, {}, config)
+      .then((res) => res.data)
+      .then((data) => setRefresh(!refresh))
+      .catch((error) => console.error(error));
+  };
+
+  const deleteRecipes = (e) => {
+    e.preventDefault();
+    const postId = e.currentTarget.dataset.id;
+    console.log(config);
+    axios
+      .delete(`${baseUrl}/recipes?postId=${postId}`, config)
       .then((res) => res.data)
       .then((data) => setRefresh(!refresh))
       .catch((error) => console.error(error));
@@ -72,8 +82,7 @@ export default function Home() {
   const HomeComponents = {
     Recipes: function Recipes() {
       return recipesData.map((recipe, idx) => {
-        const {id, Menu, Ingredients, Likes} =
-          recipe;
+        const { id, Menu, Ingredients, Likes } = recipe;
         return (
           <li className="recipe" key={idx.toString()}>
             <p className="menu-name">{Menu.name}</p>
@@ -96,6 +105,20 @@ export default function Home() {
               <ThumbUpIcon className="likes-icon" />
               좋아요 {Likes.length} 개
             </p>
+            <div className="container">
+              <div className="circles" onClick={(e) => setOpenDel(!openDel)}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <button
+                className={openDel ? 'delete-btn active' : 'delete-btn'}
+                data-id={id}
+                onClick={(e) => deleteRecipes(e)}
+              >
+                <DeleteForeverIcon className="del-icon"/>삭제하기
+              </button>
+            </div>
           </li>
         );
       });
