@@ -40,6 +40,7 @@
         display : flex;
         align-items : center;
         flex-direction: column;
+        position: relative;
         justify-content: center;
 
         p.menu-name{
@@ -90,6 +91,51 @@
             border-radius : 20px;
           }
         }
+
+        .container{
+          .circles{
+            position : absolute;
+            top : 10px;
+            right : 10px;
+            display : flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor : pointer;
+            width : 30px;
+            height : 30px;
+            border-radius: 50%;
+            &:hover{
+              background-color : rgba(0,0,0,0.2);
+            }
+            span{
+              display : inline-block;
+              width  :5px;
+              height : 5px;
+              background-color : var(--color-grey-2);
+              border-radius: 50%;
+              margin-bottom : 1px;
+            }
+          }
+          .delete-btn{
+            position : absolute;
+            top :50px;
+            border : none;
+            box-shadow: 1px 2px 6px 1px rgba(0,0,0,0.3);
+            background-color : #fff;
+            align-items: center;
+            width : 100px;
+            height : 30px;
+            justify-content: space-around;
+            border-radius: 4px;
+            cursor : pointer;
+            display : none;
+          }
+          .delete-btn.active{
+            display : flex;
+          }
+        }
+
       }
     }
   }
