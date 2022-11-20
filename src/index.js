@@ -11,6 +11,7 @@ import Sandwich from "./components/Sandwich";
 import Ingredients from "./components/Ingredients";
 import Ranking from "./components/Ranking";
 import Board from "./components/Board";
+import Order from "./components/Order";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,6 @@ const router = createBrowserRouter([
           },
         ],
       },
-
       {
         path: "ranking",
         element: <Ranking />,
@@ -51,6 +51,10 @@ const router = createBrowserRouter([
       {
         path : "board",
         element : <Board/>
+      },
+      {
+        path : 'order',
+        element : <Order/>
       }
     ],
   },

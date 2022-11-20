@@ -54,6 +54,9 @@ header {
     #gnb {
       >li {
         margin-top: 2.5rem;
+        a{
+          color : #000;
+        }
 
         &:hover {
           cursor: pointer;
