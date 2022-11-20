@@ -27,7 +27,7 @@ export default function Navigation() {
             </li>
           </ul>
         </li>
-        <li>주문연습</li>
+        <li><Link to="/order">주문연습</Link></li>
         <li onClick={(e) => makeAccordion(e)}>
           랭킹/게시판
           <ul className="gnb-sub-wrap">
@@ -39,7 +39,6 @@ export default function Navigation() {
             </li>
           </ul>
         </li>
-        <li>이벤트/뉴스</li>
       </ul>
     </nav>
   );
