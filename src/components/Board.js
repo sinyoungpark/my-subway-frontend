@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
@@ -7,11 +7,53 @@ import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
 import "../styles/Board.scss";
+import axios from "axios";
+import { UserContext } from "../App";
 
 export default function Board() {
+  const [user] = useContext(UserContext);
+  const baseUrl = "http://localhost:8000";
+  const [sandwichData, setSandwichData] = useState([]);
+  const [ingredientsData, setIngredientsData] = useState([]);
+  const [sendData, setSendData] = useState({
+    menuId: "",
+    ingredientId: [],
+    title: "",
+  });
   const [p, setP] = useState([{ data: "" }]);
   const [focus, setFocus] = useState(0);
   const [textValue, setTextValue] = useState("");
+
+  const config = {
+    headers: {
+      authorization: `Bearer ${user.accesstoken}`,
+    },
+  };
+
+  useEffect(() => {
+    getSandwichData();
+    getIngredientData();
+  }, []);
+
+  const getSandwichData = () => {
+    axios
+      .get(`${baseUrl}/menu/sandwich`)
+      .then((res) => res.data)
+      .then((data) => {
+        setSandwichData(data.sandwichData);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const getIngredientData = () => {
+    axios
+      .get(`${baseUrl}/menu/ingredients`)
+      .then((res) => res.data)
+      .then((data) => {
+        setIngredientsData(data.ingredientsData);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const dataFormatHandler = {
     bold: (e) => {
@@ -43,39 +85,86 @@ export default function Board() {
     }
   };
 
+  const sendRecipe = (e) => {
+    e.preventDefault();
+    console.log(user, config);
+    axios
+      .post(`${baseUrl}/recipes`, sendData, config)
+      .then((res) => res.data)
+      .then((data) => {
+        alert(data.data);
+      });
+  };
+
   return (
     <section id="board" className="section inner">
       <h1>나의 레시피</h1>
       <section className="selection">
         <div className="select-group">
           <label htmlFor="menu">1. 메뉴를 선택해주세요</label>
-          <select name="menuId" id="menu">
-            <option value="1">스파이시 바비큐</option>
-            <option value="2">스파이시 바비큐</option>
-            <option value="3">스파이시 바비큐</option>
-            <option value="4">스파이시 바비큐</option>
+          <select
+            name="menuId"
+            id="menu"
+            onChange={(e) => {
+              setSendData({
+                ...sendData,
+                menuId: e.currentTarget.value,
+              });
+            }}
+          >
+            {sandwichData &&
+              sandwichData.map((item) => (
+                <option value={item.id} key={item.id}>
+                  {item.name}
+                </option>
+              ))}
           </select>
         </div>
 
         <div className="select-group">
           <label htmlFor="bread">2.빵을 선택해주세요.</label>
           <select name="bread" id="bread">
-            <option value="1">허니오트</option>
-            <option value="2">양상추</option>
+            {/* {
+              ingredientsData && ingredientsData.map((item) => <option value={item.id} key={item.id}>{item.name}</option>)
+            } */}
           </select>
         </div>
 
         <div className="select-group">
           <label htmlFor="ingredients">3. 야채 선택</label>
           <div id="toppings" className="checkbox">
-            <input type="checkbox" name="" id="에그마요" />
-            <label htmlFor="에그마요">에그마요</label>
-            <input type="checkbox" name="" id="에그마요" />
-            <label htmlFor="에그마요">에그마요</label>
-            <input type="checkbox" name="" id="에그마요" />
-            <label htmlFor="에그마요">에그마요</label>
-            <input type="checkbox" name="" id="에그마요" />
-            <label htmlFor="에그마요">에그마요</label>
+            {ingredientsData &&
+              ingredientsData.map((item) => (
+                <>
+                  <input
+                    type="checkbox"
+                    value={item.id}
+                    name=""
+                    id={item.name}
+                    onClick={(e) => {
+                      if (e.currentTarget.checked) {
+                        setSendData({
+                          ...sendData,
+                          ingredientId: [
+                            ...sendData.ingredientId,
+                            e.currentTarget.value,
+                          ],
+                        });
+                      } else {
+                        const sendIngredients = sendData.ingredientId.filter(
+                          (item) => item !== e.currentTarget.value
+                        );
+
+                        setSendData({
+                          ...sendData,
+                          ingredientId: sendIngredients,
+                        });
+                      }
+                    }}
+                  />
+                  <label htmlFor={item.name}>{item.name}</label>
+                </>
+              ))}
           </div>
         </div>
 
@@ -93,9 +182,21 @@ export default function Board() {
           </div>
         </div>
       </section>
+      <button onClick={(e) => sendRecipe(e)}>저장하기</button>
 
       <section className="rich-text">
-        <h1 contentEditable={true} className="title" placeholder="title"></h1>
+        <h1
+          contentEditable={true}
+          className="title"
+          placeholder="title"
+          onInput={(e) => {
+            e.preventDefault();
+            setSendData({
+              ...sendData,
+              title: e.currentTarget.textContent,
+            });
+          }}
+        ></h1>
         <div className="text-format">
           <button
             className="text-format-btn"
