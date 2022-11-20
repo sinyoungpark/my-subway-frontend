@@ -22,7 +22,9 @@ const Login = () => {
         if(data.error) alert(data.error);
         else{
           setUser({
-            accesstoken : data.accesstoken
+            accesstoken : data.accesstoken,
+            name : data.name,
+            email : data.email
           });
         }
       })

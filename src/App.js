@@ -20,7 +20,9 @@ const App = () => {
     .then((res) => res.data)
     .then((data) => {
       setUser({
-        accesstoken : data.accesstoken
+        name : data.name,
+        email : data.email,
+        accesstoken : data.accesstoken,
       });
       setLoading(false);
     })
