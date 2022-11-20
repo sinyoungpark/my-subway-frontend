@@ -74,14 +74,14 @@ const Login = () => {
             <input type="submit" value="LOG IN" onClick={submitLogin}/>
           </form>
 
-          <div className="social-login">
+          {/* <div className="social-login">
             <p>Or log in using</p>
             <ul>
               <li>google</li>
               <li>facebook</li>
               <li>kakao</li>
             </ul>
-          </div>
+          </div> */}
         </section>
         <section className="right">
           <p className="main-txt">Don't Have an Account Yet?</p>

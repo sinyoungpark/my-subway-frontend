@@ -103,14 +103,14 @@ const Signup = () => {
 
             <input type="submit" value="SIGN UP" onClick={submitSignup} />
           </form>
-          <div className="social-login">
+          {/* <div className="social-login">
             <p>Or sign up using</p>
             <ul>
               <li>google</li>
               <li>facebook</li>
               <li>kakao</li>
             </ul>
-          </div>
+          </div> */}
         </section>
       </div>
     </section>

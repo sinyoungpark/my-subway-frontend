@@ -7,7 +7,7 @@ const Maintop = ({logoutHandler}) => {
 
   return (
     <div className="main-top inner">
-      <form action="" className="src-form">
+      {/* <form action="" className="src-form">
         <label htmlFor="src-value">
           <SearchIcon className="search-icon"/>
         </label>
@@ -17,7 +17,7 @@ const Maintop = ({logoutHandler}) => {
           id="src-value"
           placeholder="search..."
         />
-      </form>
+      </form> */}
       <input type="button" value="로그아웃" className="logout-btn" onClick={logoutHandler}/>
     </div>
   );
