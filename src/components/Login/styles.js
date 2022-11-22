@@ -6,12 +6,24 @@ export const LoginSection = styled.section`
   position: absolute;
   left: 0;
   font-family: var(--font-primary);
+
+  .only-mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    .only-desktop {
+      display: none;
+    }
+    .only-mobile{
+      display : inline-block;
+    }
+  }
 `;
 
 export const Contents = styled.div`
   display: flex;
   height: 100%;
-
   .signup_btn {
     padding: 0.8rem 4rem;
     color: white;
