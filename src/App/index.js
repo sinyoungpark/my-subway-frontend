@@ -35,6 +35,8 @@ const App = () => {
       .then((data) => {
         setUser({
           accesstoken: data.accesstoken,
+          name : data.name,
+          email : data.email
         });
         setLoading(false);
       })

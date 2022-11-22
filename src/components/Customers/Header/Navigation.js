@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Nav } from "./styles";
 
-export default function Navigation() {
+export default function Navigation({ activeHamburger, setActiveHamburger }) {
   const makeAccordion = (e) => {
     e.preventDefault();
     e.currentTarget.classList.toggle("active");
@@ -14,28 +14,55 @@ export default function Navigation() {
   };
 
   return (
-    <Nav>
+    <Nav className={activeHamburger ? "open" : false}>
       <ul id="gnb">
         <li onClick={(e) => makeAccordion(e)}>
           메뉴소개
           <ul className="gnb-sub-wrap">
             <li>
-              <Link to="/menu/sandwich">샌드위치</Link>
+              <Link
+                to="/menu/sandwich"
+                onClick={(e) => setActiveHamburger(!activeHamburger)}
+              >
+                샌드위치
+              </Link>
             </li>
             <li>
-              <Link to="/menu/ingredients">재료</Link>
+              <Link
+                to="/menu/ingredients"
+                onClick={(e) => setActiveHamburger(!activeHamburger)}
+              >
+                재료
+              </Link>
             </li>
           </ul>
         </li>
-        <li><Link to="/order">주문연습</Link></li>
+        <li>
+          <Link
+            to="/order"
+            onClick={(e) => setActiveHamburger(!activeHamburger)}
+          >
+            주문연습
+          </Link>
+        </li>
         <li onClick={(e) => makeAccordion(e)}>
           랭킹/게시판
           <ul className="gnb-sub-wrap">
             <li>
-              <Link to="/ranking">랭킹</Link>
+              <Link
+                to="/ranking"
+                onClick={(e) => setActiveHamburger(!activeHamburger)}
+              >
+                랭킹
+              </Link>
             </li>
             <li>
-              <Link to="/board">게시판</Link>
+              <Link
+                to="/board"
+                onClick={(e) => setActiveHamburger(!activeHamburger)}
+              >
+                게시판
+              </Link>
             </li>
           </ul>
         </li>
