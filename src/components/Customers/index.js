@@ -25,9 +25,8 @@ export default function Customers() {
   return (
     <Container>
       {!user.accesstoken && <Navigate to="/login" replace={true} />}
-      <Header />
-      <LogoutBtn onClick={(e) => logoutHandler(e)}>로그아웃</LogoutBtn>
-      <Outlet />
+      <Header logoutHandler={logoutHandler}/>
+      <Outlet/>
       <Footer>
         <FootLogo>
           <span>MY</span> <span>SUB</span>
