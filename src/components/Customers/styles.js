@@ -3,14 +3,19 @@ import styled from "styled-components";
 export const Container = styled.div`
   max-width: 100vw;
   min-height: 100vh;
+  padding-bottom: 25px;
+
   display: grid;
-  grid-template-rows: 10vh 80vh 10vh;
-  grid-template-columns: 20vw 80vw;
+  grid-template-rows: 0% 100% 0px;
+  grid-template-columns: 20% 80%;
   grid-template-areas:
     "a b b"
     "a c c"
     "a d d";
-  padding-bottom: 25px;
+
+  @media screen and (max-width: 600px) {
+    display : block;
+  }
 `;
 
 export const Footer = styled.footer`
@@ -23,6 +28,13 @@ export const Footer = styled.footer`
   .copyright {
     margin: 0 5rem;
   }
+
+  @media screen and (max-width : 600px){
+    width  :100%;
+    margin : 0;
+    padding : 0 1rem;
+  }
+
 `;
 export const Sns = styled.ul`
   display: flex;
@@ -63,6 +75,12 @@ export const Logo = styled.h1`
   a {
     color: #000;
   }
+
+  @media screen and (max-width: 600px) {
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 0;
+  }
 `;
 
 export const FootLogo = styled.h2`
@@ -77,16 +95,24 @@ export const FootLogo = styled.h2`
 `;
 
 export const LogoutBtn = styled.button`
-  grid-area: b;
   outline: none;
   border: none;
   background-color: transparent;
   font-family: var(--font-primary);
   cursor: pointer;
   font-size: 1rem;
-  padding: 10px;
+  display : flex;
+  align-items: center;
 
+  .logout-btn{
+    margin-right: 10px;
+  }
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    color : red;
+  }
+
+  @media screen and (max-width : 600px){
+    position : absolute;
+    right : 20px;
   }
 `;

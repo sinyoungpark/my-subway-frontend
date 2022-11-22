@@ -25,8 +25,7 @@ export default function Customers() {
 
   return (
     <Container>
-      <Header />
-      <LogoutBtn onClick={(e) => logoutHandler(e)}>로그아웃</LogoutBtn>
+      <Header logoutHandler={logoutHandler}/>
       <Outlet />
       <Footer>
         <FootLogo>
