@@ -23,6 +23,7 @@ export const LoginSection = styled.section`
 
 export const Contents = styled.div`
   display: flex;
+  width : 100%;
   height: 100%;
   .signup_btn {
     padding: 0.8rem 4rem;
@@ -42,9 +43,10 @@ export const Contents = styled.div`
 `;
 
 export const Subtext = styled.p`
-  font-size: 18px;
+  font-size: 20px;
+  text-align : center;
   padding: 1.3rem;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255,255,255, 0.9);
   width: 30rem;
 `;
 
@@ -62,6 +64,10 @@ export const Form = styled.form`
     display: inline-block;
     width: 30%;
     color: var(--color-grey-2);
+
+    &.login{
+      color : #fff;
+    }
   }
 
   @media screen and (max-width : 600px){
@@ -146,8 +152,15 @@ export const Logo = styled.h1`
 export const Error = styled.span`
   display: inline-block;
   font-size: 15px;
-  color: var(--color-error);
   font-family: var(--font-nanum);
-  width : 70%;s
+  width : 70%;
   text-align : left;
+
+  &.login-error{
+    color: var(--color-error);
+  }
+
+  &.signup-error{
+    color : var(--color-yellow);
+  }
 `;
