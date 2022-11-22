@@ -140,7 +140,7 @@ export default function Home() {
       </Recipes>
 
       <Rankings>
-        <Subtlt>랭킹</Subtlt>
+        <Subtlt>랭킹 TOP 10</Subtlt>
         <ul className="rankings">{rankingsElements}</ul>
       </Rankings>
 

@@ -130,6 +130,10 @@ export const LeftSection = styled.section`
   flex-basis: 70%;
   background-color: white;
   color: black;
+
+  @media screen and (max-width : 600px){
+    flex-basis : 100%;
+  }
 `;
 
 export const RightSection = styled.section`
@@ -162,6 +166,10 @@ export const Logo = styled.h1`
   }
   span:nth-child(3) {
     color: var(--color-green-1);
+  }
+
+  @media screen and (max-width : 600px){
+    padding : 20px;
   }
 `;
 

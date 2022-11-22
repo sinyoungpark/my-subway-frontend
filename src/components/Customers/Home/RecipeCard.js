@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { RecipeItem } from "./styles";
 
 export default function RecipeCard({ recipe, likesBtnHandler, deleteRecipes }) {
   const { id, Menu, Ingredients, Likes } = recipe;
   const [openDel, setOpenDel] = useState(false);
 
   return (
-    <li className="recipe">
+    <RecipeItem>
       <p className="menu-name">{Menu.name}</p>
       <img src={Menu.img} alt="menuImg" className="menu-img" />
       <ul className="ingredients">
@@ -33,12 +34,15 @@ export default function RecipeCard({ recipe, likesBtnHandler, deleteRecipes }) {
         <button
           className={openDel ? "delete-btn active" : "delete-btn"}
           data-id={id}
-          onClick={(e) => deleteRecipes(e)}
+          onClick={(e) => {
+            deleteRecipes(e);
+            setOpenDel(!openDel);
+          }}
         >
           <DeleteForeverIcon className="del-icon" />
           삭제하기
         </button>
       </div>
-    </li>
+    </RecipeItem>
   );
 }
