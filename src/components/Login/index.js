@@ -78,7 +78,7 @@ const Login = () => {
               type="email"
               name="email"
               id="email"
-              placeholder="이메일"
+              placeholder="이메일 *"
               onChange={(e) => setEmail(e.target.value)}
             />
 
@@ -87,10 +87,10 @@ const Login = () => {
               type="password"
               name="password"
               id="password"
-              placeholder="비밀번호"
+              placeholder="비밀번호 *"
               onChange={(e) => setPw(e.target.value)}
             />
-            <Error>{error}</Error>
+            <Error className="login-error">{error}</Error>
             <Link to="/signup" className="only-mobile link">
               회원가입
             </Link>
@@ -98,8 +98,7 @@ const Login = () => {
           </Form>
         </LeftSection>
         <RightSection className="only-desktop">
-          <MainText>아직 계정이 없으신가요?</MainText>
-          <Subtext></Subtext>
+          <Subtext>아직 계정이 없으신가요?</Subtext>
           <Link to="/signup" className="signup_btn">
             회원가입
           </Link>
