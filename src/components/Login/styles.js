@@ -40,6 +40,22 @@ export const Contents = styled.div`
       background-color: white;
     }
   }
+
+  .login_btn {
+    padding: 0.8rem 4rem;
+    color: #009132;
+    background-color: transparent;
+    border: 1px solid #009132;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+    border-radius: 30px;
+
+    &:hover {
+      color: white;
+      background-color: #009132;
+    
+  }
 `;
 
 export const Subtext = styled.p`
@@ -157,7 +173,7 @@ export const Error = styled.span`
   text-align : left;
 
   &.login-error{
-    color: var(--color-error);
+    color: red;
   }
 
   &.signup-error{
