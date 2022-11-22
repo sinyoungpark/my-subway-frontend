@@ -6,6 +6,19 @@ export const SignupSection = styled.section`
   position: absolute;
   left: 0;
   font-family: var(--font-primary);
+
+  .only-mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    .only-desktop {
+      display: none;
+    }
+    .only-mobile{
+      display : inline-block;
+    }
+  }
 `;
 
 export const LeftSection = styled.section`
@@ -24,5 +37,12 @@ export const RightSection = styled.section`
   flex-basis: 70%;
   background-color: #009132;
   color: white;
-  text-align: center;
+`;
+
+export const Subtext = styled.p`
+  font-size: 20px;
+  text-align : center;
+  padding: 1.3rem;
+  color: rgba(0,0,0, 0.9);
+  width: 30rem;
 `;

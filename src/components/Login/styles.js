@@ -6,12 +6,25 @@ export const LoginSection = styled.section`
   position: absolute;
   left: 0;
   font-family: var(--font-primary);
+
+  .only-mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    .only-desktop {
+      display: none;
+    }
+    .only-mobile{
+      display : inline-block;
+    }
+  }
 `;
 
 export const Contents = styled.div`
   display: flex;
+  width : 100%;
   height: 100%;
-
   .signup_btn {
     padding: 0.8rem 4rem;
     color: white;
@@ -20,52 +33,92 @@ export const Contents = styled.div`
     outline: none;
     cursor: pointer;
     transition: all 0.5s ease-out;
+    border-radius: 30px;
 
     &:hover {
       color: #009132;
       background-color: white;
     }
   }
+
+  .login_btn {
+    padding: 0.8rem 4rem;
+    color: #009132;
+    background-color: transparent;
+    border: 1px solid #009132;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+    border-radius: 30px;
+
+    &:hover {
+      color: white;
+      background-color: #009132;
+    
+  }
 `;
 
 export const Subtext = styled.p`
-  font-size: 18px;
+  font-size: 20px;
+  text-align : center;
   padding: 1.3rem;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255,255,255, 0.9);
   width: 30rem;
 `;
 
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  width: 30rem;
+  width: 28rem;
 
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-    height: 2.5rem;
-    margin: 10px 0 20px 0;
-    outline: none;
-    border: var(--color-grey-1) 1px solid;
-    padding-left: 10px;
-    border-radius: 3px;
+  label {
+    display: none;
   }
 
-  input[type="submit"] {
-    margin: 30px 0;
-    padding: 1rem;
-    background-color: #009132;
-    border: 1px solid white;
-    border-radius: 3px;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
+  a {
+    padding-top: 10px;
+    font-family: var(--font-nanum);
+    text-align: right;
+    display: inline-block;
+    width: 30%;
+    color: var(--color-grey-2);
 
-    &:hover {
-      background-color: #00a53a;
+    &.login{
+      color : #fff;
     }
+  }
+
+  @media screen and (max-width : 600px){
+    width : 80%
+  }
+`;
+
+export const SubmitBtn = styled.input`
+  margin: 30px 0;
+  padding: 1rem;
+  background-color: #009132;
+  border: 1px solid white;
+  border-radius: 3px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  width: 100%;
+  &:hover {
+    background-color: #00a53a;
+  }
+`;
+
+export const UserInput = styled.input`
+  height: 55px;
+  margin-bottom: 10px;
+  outline: none;
+  border: var(--color-grey-1) 1px solid;
+  padding-left: 40px;
+  border-radius: 3px;
+  font-size: 16px;
+  width: 100%;
+
+  &:focus {
+    border-color: var(--color-green-1);
   }
 `;
 
@@ -77,7 +130,6 @@ export const LeftSection = styled.section`
   flex-basis: 70%;
   background-color: white;
   color: black;
-  text-align: center;
 `;
 
 export const RightSection = styled.section`
@@ -91,18 +143,40 @@ export const RightSection = styled.section`
 `;
 
 export const MainText = styled.p`
-  font-size: 24px;
+  font-size: 32px;
+  .icon {
+    margin-right: 10px;
+  }
 `;
 
 export const Logo = styled.h1`
   position: absolute;
   font-family: var(--font-logo);
-  font-size: 2.5rem;
+  font-size: 2rem;
   padding: 3rem;
+  a {
+    color: #000;
+  }
   span:nth-child(2) {
     color: var(--color-yellow-1);
   }
   span:nth-child(3) {
     color: var(--color-green-1);
+  }
+`;
+
+export const Error = styled.span`
+  display: inline-block;
+  font-size: 15px;
+  font-family: var(--font-nanum);
+  width : 70%;
+  text-align : left;
+
+  &.login-error{
+    color: red;
+  }
+
+  &.signup-error{
+    color : var(--color-yellow);
   }
 `;
