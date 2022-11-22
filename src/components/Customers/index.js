@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import Header from "./Header";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { FootLogo, Footer, Sns, Container, LogoutBtn } from "./styles";
-import axios
- from "axios";
+import axios from "axios";
 import { UserContext } from "../../App";
 
 export default function Customers() {
   const baseUrl = "http://localhost:8000";
-  const [setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
 
   const logoutHandler = (e) => {
     e.preventDefault();
@@ -25,6 +24,7 @@ export default function Customers() {
 
   return (
     <Container>
+      {!user.accesstoken && <Navigate to="/login" replace={true} />}
       <Header />
       <LogoutBtn onClick={(e) => logoutHandler(e)}>로그아웃</LogoutBtn>
       <Outlet />
