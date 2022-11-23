@@ -1,13 +1,34 @@
 import styled from "styled-components";
 
 export const BoardSection = styled.section`
-  padding: 1rem 70px;
+  padding: 4rem 70px;
   grid-area: c;
   margin-bottom: 100px;
   font-family: var(--font-primary);
+
+  .submit-btn {
+    background-color: var(--color-green-1);
+    color: white;
+    padding: 10px 1rem;
+    border-radius: 20px;
+    outline : none;
+    border : none;
+    font-family: var(--font-primary);
+    margin-top : 1rem;
+    font-size : 18px;
+    cursor : pointer;
+  }
+
+  @media screen and (max-width : 600px){
+    padding : 90px 30px 0 30px;
+    h1{
+      text-align : center;
+    }
+  }
 `;
 
 export const Selection = styled.section`
+  padding : 2rem 0;
   height: 200px;
   overflow: hidden;
   display: flex;
@@ -33,6 +54,15 @@ export const Selection = styled.section`
       }
     }
   }
+
+  @media screen and (max-width : 600px){
+    hegiht : max-content;
+    flex-direction : row;
+    justify-content : space-between;
+    .select-group{
+      margin-bottom : 20px;
+    }
+  }
 `;
 
 export const RichText = styled.section`
@@ -45,6 +75,11 @@ export const RichText = styled.section`
     padding: 5px;
     font-size: 20px;
     margin-top: 0;
+  }
+
+  @media screen and (max-width : 600px){
+    width : 100%;
+    margin-top : 20px;
   }
 `;
 
@@ -65,6 +100,10 @@ export const TextFormat = styled.div`
     margin: 0 5px;
     border-radius: 3px;
   }
+
+  @media screen and (max-width : 600px){
+    flex-wrap : wrap;
+  }
 `;
 
 export const TextArea = styled.div`
@@ -72,4 +111,9 @@ export const TextArea = styled.div`
   padding: 10px;
   border: 1px solid var(--color-grey-1);
   height: 300px;
+  cursor : input;
 `;
+
+export const UserText = styled.p`
+  outline : none;
+`
