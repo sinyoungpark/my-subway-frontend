@@ -13,6 +13,12 @@ export default function Navigation({ activeHamburger, setActiveHamburger }) {
       : (panel.style.maxHeight = panel.scrollHeight + "px");
   };
 
+  const openMobileNav = (e) => {
+    if (setActiveHamburger !== undefined) {
+      setActiveHamburger(!activeHamburger);
+    }
+  };
+
   return (
     <Nav className={activeHamburger ? "open" : false}>
       <ul id="gnb">
@@ -20,17 +26,14 @@ export default function Navigation({ activeHamburger, setActiveHamburger }) {
           메뉴소개
           <ul className="gnb-sub-wrap">
             <li>
-              <Link
-                to="/menu/sandwich"
-                onClick={(e) => setActiveHamburger(!activeHamburger)}
-              >
+              <Link to="/menu/sandwich" onClick={(e) => openMobileNav(e)}>
                 샌드위치
               </Link>
             </li>
             <li>
               <Link
                 to="/menu/ingredients"
-                onClick={(e) => setActiveHamburger(!activeHamburger)}
+                onClick={(e) => openMobileNav(e)}
               >
                 재료
               </Link>
@@ -40,7 +43,7 @@ export default function Navigation({ activeHamburger, setActiveHamburger }) {
         <li>
           <Link
             to="/order"
-            onClick={(e) => setActiveHamburger(!activeHamburger)}
+            onClick={(e) => openMobileNav(e)}
           >
             주문연습
           </Link>
@@ -51,7 +54,7 @@ export default function Navigation({ activeHamburger, setActiveHamburger }) {
             <li>
               <Link
                 to="/ranking"
-                onClick={(e) => setActiveHamburger(!activeHamburger)}
+                onClick={(e) => openMobileNav(e)}
               >
                 랭킹
               </Link>
@@ -59,7 +62,7 @@ export default function Navigation({ activeHamburger, setActiveHamburger }) {
             <li>
               <Link
                 to="/board"
-                onClick={(e) => setActiveHamburger(!activeHamburger)}
+                onClick={(e) => openMobileNav(e)}
               >
                 게시판
               </Link>
