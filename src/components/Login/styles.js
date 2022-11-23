@@ -185,6 +185,6 @@ export const Error = styled.span`
   }
 
   &.signup-error{
-    color : var(--color-yellow);
+    color : var(--color-yellow-1);
   }
 `;
