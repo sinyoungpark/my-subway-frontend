@@ -4,7 +4,7 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import { Link } from "react-router-dom";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { UserContext } from "../../../App";
-import { RankingList, RankingSection, TopSection } from "./styles";
+import { MainTlt, RankingList, RankingSection, TopSection } from "./styles";
 import RankingCard from "../Home/RankingCard";
 
 export default function Ranking() {
@@ -52,15 +52,15 @@ export default function Ranking() {
   return (
     <RankingSection>
       <TopSection>
-        <h1>
+        <MainTlt>
           <AutoAwesomeIcon className="star-icon" />
           샌드위치 꿀조합
-        </h1>
-        <Link to="/board" className="board-link-btn">
+        </MainTlt>
+        <Link to="/board" className="board-link-btn only-desktop">
           내 레시피 올리기
         </Link>
       </TopSection>
-      <RankingList>{rankingsElements}</RankingList>
+      <ul className="rankings">{rankingsElements}</ul>
     </RankingSection>
   );
 }
