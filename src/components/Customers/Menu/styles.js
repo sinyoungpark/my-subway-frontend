@@ -6,10 +6,14 @@ export const MenuSection = styled.section`
   overflow: hidden;
   overflow-y: visible;
   font-family: var(--font-primary);
+
+  @media screen and (max-width : 600px){
+    padding-top : 4rem;
+  }
 `;
 
 export const MainVisual = styled.section`
-  height: 250px;
+  height : 250px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -19,6 +23,10 @@ export const MainVisual = styled.section`
   img {
     height : 100%;
     width : 100%;
+  }
+
+  @media screen and (max-width : 600px){
+    height : 170px;
   }
 `;
 
@@ -32,17 +40,36 @@ export const Maintlt = styled.h2`
   p {
     font-size: 18px;
   }
+
+  @media screen and (max-width : 600px){
+    font-size : 28px;
+    p{
+      font-size : 12px;
+    }
+  }
 `;
 
 export const Inner = styled.section`
   padding: 1rem 70px;
+  @media screen and (max-width : 600px){
+    padding : 0;
+  }
 `;
 
 export const Items = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-top: 3rem;
+  height : 500px;
+  overflow : hidden;
+  overflow-y : visible;
+
+  @media screen and (max-width : 600px){
+    height : max-content;
+    margin-top : 10px;
+    padding : 0 20px;
+    justify-content:  space-between;
+  }
 `;
 
 export const Item = styled.li`
@@ -54,9 +81,11 @@ export const Item = styled.li`
   border-radius: 30px;
   margin-bottom: 3rem;
   padding-bottom: 2rem;
+  height : 250px;
+  margin-left : 15px;
 
   .item-img {
-    width: 260px;
+    width: 230px;
     height: 170px;
   }
   .item-name {
@@ -67,6 +96,14 @@ export const Item = styled.li`
     font-size: 18px;
     color: var(--color-yellow-1);
   }
+
+  @media screen and (max-width : 600px){
+    flex-basis : 43%;
+    .item-img{
+      width  :180px;
+      height : 140px;
+    }
+  }
 `;
 
 export const Category = styled.ul`
@@ -76,5 +113,10 @@ export const Category = styled.ul`
   li {
     margin-right: 1rem;
     cursor: pointer;
+  }
+
+  @media screen and (max-width : 600px){
+    justify-content : center;
+    padding : 30px 0;
   }
 `;
