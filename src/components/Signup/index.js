@@ -105,7 +105,7 @@ const Signup = () => {
                 setPW(e.target.value);
               }}
             />
-            <Error>{error}</Error>
+            <Error className="signup-error">{error}</Error>
             <Link to="/login" className="only-mobile login">로그인</Link>
             <SubmitBtn type="submit" value="SIGN UP" onClick={submitSignup} />
           </Form>

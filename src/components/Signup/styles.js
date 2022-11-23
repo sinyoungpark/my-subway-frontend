@@ -37,6 +37,9 @@ export const RightSection = styled.section`
   flex-basis: 70%;
   background-color: #009132;
   color: white;
+  @media screen and (max-width : 600px){
+    flex-basis : 100%;
+  }
 `;
 
 export const Subtext = styled.p`
