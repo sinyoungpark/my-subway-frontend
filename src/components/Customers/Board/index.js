@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
@@ -15,20 +15,21 @@ import {
   TextArea,
   TextFormat,
 } from "./styles";
+import Paragraph from "./Paragraph";
 
 export default function Board() {
   const [user] = useContext(UserContext);
   const baseUrl = "http://localhost:8000";
   const [sandwichData, setSandwichData] = useState([]);
   const [ingredientsData, setIngredientsData] = useState([]);
+  const [paragraphs, setParagraphs] = useState([""]);
   const [sendData, setSendData] = useState({
     menuId: "",
     ingredientId: [],
     title: "",
   });
-  const [p, setP] = useState([{ data: "" }]);
-  const [focus, setFocus] = useState(0);
-  const [textValue, setTextValue] = useState("");
+
+  const textElement = useRef(null);
 
   const config = {
     headers: {
@@ -64,31 +65,11 @@ export default function Board() {
   const dataFormatHandler = {
     bold: (e) => {
       e.preventDefault();
-      const selection = window.getSelection();
-      console.log(selection);
+      const range =  new Range();
+      range.setStart(textElement.current, 0);
+      range.setEnd(textElement.current, 4);
+      alert(range);
     },
-  };
-
-  const createPelement = (e) => {
-    setP([
-      ...p,
-      {
-        data: "",
-      },
-    ]);
-    console.log(p);
-  };
-
-  const enterkey = (e) => {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      setP([
-        ...p,
-        {
-          data: "",
-        },
-      ]);
-    }
   };
 
   const sendRecipe = (e) => {
@@ -99,7 +80,60 @@ export default function Board() {
       .then((res) => res.data)
       .then((data) => {
         alert(data.data);
-      });
+      })
+      .error((e) => alert("입력해주세요."))
+  };
+
+  const sandwichOptions =
+    sandwichData &&
+    sandwichData.map((item) => (
+      <option value={item.id} key={item.id}>
+        {item.name}
+      </option>
+    ));
+
+  const ingredientsOptions =
+    ingredientsData &&
+    ingredientsData.map((item) => (
+      <>
+        <input
+          type="checkbox"
+          value={item.id}
+          name=""
+          id={item.name}
+          onClick={(e) => {
+            if (e.currentTarget.checked) {
+              setSendData({
+                ...sendData,
+                ingredientId: [...sendData.ingredientId, e.currentTarget.value],
+              });
+            } else {
+              const sendIngredients = sendData.ingredientId.filter(
+                (item) => item !== e.currentTarget.value
+              );
+
+              setSendData({
+                ...sendData,
+                ingredientId: sendIngredients,
+              });
+            }
+          }}
+        />
+        <label htmlFor={item.name}>{item.name}</label>
+      </>
+    ));
+
+  /*text-editor handler */
+  const focusHandler = () => {
+    textElement.current.focus();
+  };
+  const enterHandler = (e) => {
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+      setParagraphs([...paragraphs, ""]);
+      focusHandler();
+    }
   };
 
   return (
@@ -118,12 +152,7 @@ export default function Board() {
               });
             }}
           >
-            {sandwichData &&
-              sandwichData.map((item) => (
-                <option value={item.id} key={item.id}>
-                  {item.name}
-                </option>
-              ))}
+            {sandwichOptions}
           </select>
         </div>
 
@@ -139,38 +168,7 @@ export default function Board() {
         <div className="select-group">
           <label htmlFor="ingredients">3. 야채 선택</label>
           <div id="toppings" className="checkbox">
-            {ingredientsData &&
-              ingredientsData.map((item) => (
-                <>
-                  <input
-                    type="checkbox"
-                    value={item.id}
-                    name=""
-                    id={item.name}
-                    onClick={(e) => {
-                      if (e.currentTarget.checked) {
-                        setSendData({
-                          ...sendData,
-                          ingredientId: [
-                            ...sendData.ingredientId,
-                            e.currentTarget.value,
-                          ],
-                        });
-                      } else {
-                        const sendIngredients = sendData.ingredientId.filter(
-                          (item) => item !== e.currentTarget.value
-                        );
-
-                        setSendData({
-                          ...sendData,
-                          ingredientId: sendIngredients,
-                        });
-                      }
-                    }}
-                  />
-                  <label htmlFor={item.name}>{item.name}</label>
-                </>
-              ))}
+            {ingredientsOptions}
           </div>
         </div>
 
@@ -188,7 +186,7 @@ export default function Board() {
           </div>
         </div>
       </Selection>
-      <button onClick={(e) => sendRecipe(e)}>저장하기</button>
+
       <RichText>
         <h1
           contentEditable={true}
@@ -245,21 +243,19 @@ export default function Board() {
             <FormatAlignRightIcon />
           </button>
         </TextFormat>
+
         <TextArea>
-          {p &&
-            p.map((item) => (
-              <p
-                onKeyDown={(e) => enterkey(e)}
-                contentEditable={true}
-                onMouseUp={(e) => {
-                  console.log(window.getSelection());
-                }}
-              >
-                hi!
-              </p>
+          {paragraphs &&
+            paragraphs.map((text, idx) => (
+              <Paragraph
+                textContent={text}
+                ref={textElement}
+                enterHandler={enterHandler}
+              />
             ))}
         </TextArea>
       </RichText>
+      <button className="submit-btn" onClick={(e) => sendRecipe(e)}>저장하기</button>
     </BoardSection>
   );
 }
