@@ -56,11 +56,16 @@ export const Selection = styled.section`
   }
 
   @media screen and (max-width : 600px){
-    hegiht : max-content;
+    height : max-content;
     flex-direction : row;
     justify-content : space-between;
     .select-group{
       margin-bottom : 20px;
+      flex-basis : 50%;
+
+      .checkbox{
+        
+      }
     }
   }
 `;
@@ -79,7 +84,6 @@ export const RichText = styled.section`
 
   @media screen and (max-width : 600px){
     width : 100%;
-    margin-top : 20px;
   }
 `;
 

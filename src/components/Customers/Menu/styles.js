@@ -99,9 +99,11 @@ export const Item = styled.li`
 
   @media screen and (max-width : 600px){
     flex-basis : 43%;
+    justify-content : center;
+    padding : 10px;
     .item-img{
-      width  :180px;
-      height : 140px;
+      width  :100px;
+      height : 80px;
     }
   }
 `;
