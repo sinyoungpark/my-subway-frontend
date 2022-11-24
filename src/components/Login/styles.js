@@ -133,6 +133,8 @@ export const LeftSection = styled.section`
 
   @media screen and (max-width : 600px){
     flex-basis : 100%;
+    width : 100%;
+    height : 100%;
   }
 `;
 
