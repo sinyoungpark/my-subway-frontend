@@ -9,9 +9,10 @@ axios.defaults.withCredentials = true;
 
 export const UserContext = React.createContext([]);
 export const AdContext = React.createContext([]);
+export const RequestUrl = React.createContext([]);
 
 const App = () => {
-  const baseUrl = "http://localhost:8000";
+  const [baseUrl] = useState("http://127.0.0.1:8000");
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [adData, setAdData] = useState([]);
@@ -35,8 +36,8 @@ const App = () => {
       .then((data) => {
         setUser({
           accesstoken: data.accesstoken,
-          name : data.name,
-          email : data.email
+          name: data.name,
+          email: data.email,
         });
         setLoading(false);
       })
@@ -55,9 +56,11 @@ const App = () => {
 
   return (
     <UserContext.Provider value={[user, setUser]}>
-      <AdContext.Provider value={[adData, setAdData]}>
-        <Outlet />
-      </AdContext.Provider>
+      <RequestUrl.Provider value={[baseUrl]}>
+        <AdContext.Provider value={[adData, setAdData]}>
+          <Outlet />
+        </AdContext.Provider>
+      </RequestUrl.Provider>
     </UserContext.Provider>
   );
 };

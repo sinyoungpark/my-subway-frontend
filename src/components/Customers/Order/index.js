@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserDialog from "./UserDialog";
 import StaffDialog from "./StaffDialog";
 import axios from "axios";
 import { Dialogs, OrderSection, SandwichItem, Sandwich } from "./styles";
+import { RequestUrl } from "../../../App";
 
 export default function Order() {
+  const [baseUrl] = useContext(RequestUrl);
   const [CurMessage, setCurMessage] = useState("");
   const [staffMessage, setStaffMessage] = useState([
     "안녕하세요, 서브웨이입니다!",
     "원하시는 메뉴를 골라주세요.",
   ]);
   const [curIdx, setCurIdx] = useState(0);
-  const baseUrl = "http://localhost:8000";
   const [sandwichData, setSandwichData] = useState([]);
   const [userMessage, setUserMessage] = useState("");
 
