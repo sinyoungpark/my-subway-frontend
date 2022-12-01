@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 import { SignupSection, LeftSection, RightSection, Subtext } from "./styles";
@@ -12,9 +12,10 @@ import {
   UserInput,
 } from "../Login/styles";
 import LockRoundedIcon from "@mui/icons-material/LockRounded";
+import { RequestUrl } from "../../App";
 
 const Signup = () => {
-  const baseUrl = "http://localhost:8000";
+  const [baseUrl] = useContext(RequestUrl);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPW] = useState("");

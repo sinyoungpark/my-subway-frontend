@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Maintlt,
   MainVisual,
@@ -10,9 +10,10 @@ import {
   Category,
 } from "./styles";
 import mainImg from "../../../img/img_visual_sandwich.jpg";
+import { RequestUrl } from "../../../App/index";
 
 export default function Sandwich() {
-  const baseUrl = "http://localhost:8000";
+  const [baseUrl] = useContext(RequestUrl);
   const [sandwichData, setSandwichData] = useState([]);
 
   useEffect(() => {

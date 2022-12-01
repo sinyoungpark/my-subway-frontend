@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import { Navigate } from "react-router-dom";
-import { AdContext, RankingsContext, UserContext } from "../../../App";
+import { AdContext, RankingsContext, RequestUrl, UserContext } from "../../../App";
 import axios from "axios";
 import SlideCard from "./SlideCard";
 import {
@@ -22,7 +22,7 @@ import RecipeCard from "./RecipeCard";
 import RankingCard from "./RankingCard";
 
 export default function Home() {
-  const baseUrl = "http://localhost:8000";
+  const [baseUrl] = useContext(RequestUrl);
   const [user] = useContext(UserContext);
   const [recipesData, setRecipesData] = useState([]);
   const [adData] = useContext(AdContext);

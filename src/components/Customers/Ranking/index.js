@@ -3,13 +3,13 @@ import React, { useContext, useEffect, useState } from "react";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import { Link } from "react-router-dom";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import { UserContext } from "../../../App";
+import { RequestUrl, UserContext } from "../../../App";
 import { MainTlt, RankingList, RankingSection, TopSection } from "./styles";
 import RankingCard from "../Home/RankingCard";
 
 export default function Ranking() {
   const [user] = useContext(UserContext);
-  const baseUrl = "http://localhost:8000";
+  const [baseUrl] = useContext(RequestUrl);
   const [rankingData, setRankingsData] = useState([]);
   const [refresh, setRefresh] = useState(false);
 

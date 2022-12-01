@@ -7,7 +7,7 @@ import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
 import axios from "axios";
-import { UserContext } from "../../../App";
+import { RequestUrl, UserContext } from "../../../App";
 import {
   BoardSection,
   RichText,
@@ -19,7 +19,7 @@ import Paragraph from "./Paragraph";
 
 export default function Board() {
   const [user] = useContext(UserContext);
-  const baseUrl = "http://localhost:8000";
+  const [baseUrl] = useContext(RequestUrl);
   const [sandwichData, setSandwichData] = useState([]);
   const [ingredientsData, setIngredientsData] = useState([]);
   const [paragraphs, setParagraphs] = useState([""]);

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { UserContext } from "../../App";
+import { RequestUrl, UserContext } from "../../App";
 import {
   Logo,
   Contents,
@@ -19,7 +19,7 @@ import LockOpenRoundedIcon from "@mui/icons-material/LockOpenRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 
 const Login = () => {
-  const baseUrl = "http://localhost:8000";
+  const [baseUrl] = useContext(RequestUrl);
   const [user, setUser] = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPw] = useState("");

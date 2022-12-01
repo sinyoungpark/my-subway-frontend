@@ -5,10 +5,10 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { FootLogo, Footer, Sns, Container, LogoutBtn } from "./styles";
 import axios from "axios";
-import { UserContext } from "../../App";
+import { RequestUrl, UserContext } from "../../App";
 
 export default function Customers() {
-  const baseUrl = "http://localhost:8000";
+  const [baseUrl] = useContext(RequestUrl);
   const [user, setUser] = useContext(UserContext);
 
   const logoutHandler = (e) => {
