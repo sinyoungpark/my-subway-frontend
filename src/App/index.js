@@ -12,7 +12,7 @@ export const AdContext = React.createContext([]);
 export const RequestUrl = React.createContext([]);
 
 const App = () => {
-  const [baseUrl] = useState("http://127.0.0.1:8000");
+  const [baseUrl] = useState("https://subway-server.loca.lt/");
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [adData, setAdData] = useState([]);
