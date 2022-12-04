@@ -15,19 +15,24 @@ import {
   TextArea,
   TextFormat,
 } from "./styles";
-import Paragraph from "./Paragraph";
+import { Editor, EditorState, RichUtils } from "draft-js";
+import "draft-js/dist/Draft.css";
 
 export default function Board() {
   const [user] = useContext(UserContext);
   const [baseUrl] = useContext(RequestUrl);
   const [sandwichData, setSandwichData] = useState([]);
   const [ingredientsData, setIngredientsData] = useState([]);
-  const [paragraphs, setParagraphs] = useState([""]);
   const [sendData, setSendData] = useState({
     menuId: "",
     ingredientId: [],
     title: "",
   });
+
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
+  const [textAlign, setTextAlign] = useState("left");
 
   const textElement = useRef(null);
 
@@ -62,15 +67,136 @@ export default function Board() {
       .catch((err) => console.log(err));
   };
 
+  const formatValue = [
+    {
+      type: "inline",
+      value: "BOLD",
+      icon: "FormatBoldIcon",
+    },
+    {
+      type: "inline",
+      value: "ITALIC",
+      icon: "FormatItalicIcon",
+    },
+    {
+      type: "inline",
+      value: "UNDERLINE",
+      icon: "FormatUnderlinedIcon",
+    },
+    {
+      type: "inline",
+      value: "STRIKETHROUGH",
+      icon: "FormatStrikethroughIcon",
+    },
+    {
+      type: "block",
+      value: "header-one",
+      text: "h1",
+    },
+    {
+      type: "block",
+      value: "header-two",
+      text: "h2",
+    },
+    {
+      type: "block",
+      value: "header-three",
+      text: "h3",
+    },
+    {
+      type: "block",
+      value: "unordered-list-item",
+      text: "ul",
+    },
+    {
+      type: "block",
+      value: "ordered-list-item",
+      text: "ol",
+    },
+    {
+      type: "align",
+      value: "left",
+    },
+    {
+      type: "align",
+      value: "center",
+    },
+    {
+      type: "align",
+      value: "right",
+    },
+  ];
+
   const dataFormatHandler = {
-    bold: (e) => {
+    toggleInlineStyle: (e) => {
       e.preventDefault();
-      const range =  new Range();
-      range.setStart(textElement.current, 0);
-      range.setEnd(textElement.current, 4);
-      alert(range);
+      const style = e.currentTarget.getAttribute("data-style");
+      setEditorState(RichUtils.toggleInlineStyle(editorState, style));
+    },
+    toggleBlockStyle: (e) => {
+      e.preventDefault();
+      const block = e.currentTarget.getAttribute("data-style");
+      console.log(block);
+      setEditorState(RichUtils.toggleBlockType(editorState, block));
+    },
+    setTextAlign: (e) => {
+      e.preventDefault();
+      const align = e.currentTarget.getAttribute("data-style");
+      console.log(align);
+      setTextAlign(align);
     },
   };
+
+  const formatElements = formatValue.map((item) => {
+    if (item.type === "inline") {
+      return (
+        <button
+          className="text-format-btn"
+          data-style={item.value}
+          onClick={(e) => dataFormatHandler.toggleInlineStyle(e)}
+        >
+          {item.value === "BOLD" ? (
+            <FormatBoldIcon />
+          ) : item.value === "ITALIC" ? (
+            <FormatItalicIcon />
+          ) : item.value === "UNDERLINE" ? (
+            <FormatUnderlinedIcon />
+          ) : item.value === "STRIKETHROUGH" ? (
+            <FormatStrikethroughIcon />
+          ) : (
+            false
+          )}
+        </button>
+      );
+    } else if (item.type === "block") {
+      return (
+        <button
+          className="text-format-btn"
+          data-style={item.value}
+          onClick={(e) => dataFormatHandler.toggleBlockStyle(e)}
+        >
+          {item.text}
+        </button>
+      );
+    }
+    return (
+      <button
+        className="text-format-btn"
+        data-style={item.value}
+        onClick={(e) => dataFormatHandler.setTextAlign(e)}
+      >
+        {item.value === "left" ? (
+          <FormatAlignLeftIcon />
+        ) : item.value === "center" ? (
+          <FormatAlignCenterIcon />
+        ) : item.value === "right" ? (
+          <FormatAlignRightIcon />
+        ) : (
+          false
+        )}
+      </button>
+    );
+  });
 
   const sendRecipe = (e) => {
     e.preventDefault();
@@ -123,18 +249,10 @@ export default function Board() {
       </>
     ));
 
-  /*text-editor handler */
-  const focusHandler = () => {
-    textElement.current.focus();
-  };
-  const enterHandler = (e) => {
-
-    if (e.key === "Enter") {
+    const onFocusHandler = (e) => {
       e.preventDefault();
-      setParagraphs([...paragraphs, ""]);
-      focusHandler();
+      textElement.current.focus();
     }
-  };
 
   return (
     <BoardSection>
@@ -188,7 +306,7 @@ export default function Board() {
       </Selection>
 
       <RichText>
-        <h1
+        <h1 
           contentEditable={true}
           className="title"
           placeholder="title"
@@ -200,62 +318,20 @@ export default function Board() {
             });
           }}
         ></h1>
-        <TextFormat>
-          <button
-            className="text-format-btn"
-            data-name="bold"
-            onClick={(e) => dataFormatHandler.bold(e)}
-          >
-            <FormatBoldIcon />
-          </button>
-          <button className="text-format-btn">
-            <FormatItalicIcon />
-          </button>
-          <button className="text-format-btn">
-            <FormatUnderlinedIcon />
-          </button>
-          <button className="text-format-btn">
-            <FormatStrikethroughIcon />
-          </button>
-          <select name="text-level" id="text-level">
-            <option value="p">Normal</option>
-            <option value="h1">H1</option>
-            <option value="h2">H2</option>
-            <option value="h3">H3</option>
-          </select>
-          <select name="font-size" id="font-size">
-            <option value={18}>18px</option>
-            <option value={24}>24px</option>
-            <option value={36}>36px</option>
-          </select>
-          <select name="font-family" id="font-family">
-            <option value={18}>Roboto</option>
-            <option value={24}>Noto Sans Korean</option>
-            <option value={36}>36px</option>
-          </select>
-          <button className="text-align">
-            <FormatAlignLeftIcon />
-          </button>
-          <button className="text-align">
-            <FormatAlignCenterIcon />
-          </button>
-          <button className="text-align">
-            <FormatAlignRightIcon />
-          </button>
-        </TextFormat>
+        <TextFormat>{formatElements}</TextFormat>
 
-        <TextArea>
-          {paragraphs &&
-            paragraphs.map((text, idx) => (
-              <Paragraph
-                textContent={text}
-                ref={textElement}
-                enterHandler={enterHandler}
-              />
-            ))}
+        <TextArea onClick={(e) => onFocusHandler(e)}>
+          <Editor
+            editorState={editorState}
+            onChange={setEditorState}
+            ref={textElement}
+            textAlignment={textAlign}
+          />
         </TextArea>
       </RichText>
-      <button className="submit-btn" onClick={(e) => sendRecipe(e)}>저장하기</button>
+      <button className="submit-btn" onClick={(e) => sendRecipe(e)}>
+        저장하기
+      </button>
     </BoardSection>
   );
 }
