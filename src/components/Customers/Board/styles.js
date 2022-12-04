@@ -69,7 +69,7 @@ export const RichText = styled.section`
   font-family: var(--font-nanum);
   width: 50%;
 
-  h1 {
+  h1.title {
     color: #000;
     border: 1px solid #000;
     padding: 5px;
