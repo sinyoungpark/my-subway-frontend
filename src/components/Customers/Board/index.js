@@ -315,7 +315,7 @@ export default function Board() {
       </Selection>
 
       <RichText>
-        <h1
+        <h1 
           contentEditable={true}
           className="title"
           placeholder="title"
