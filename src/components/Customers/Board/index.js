@@ -15,7 +15,6 @@ import {
   TextArea,
   TextFormat,
 } from "./styles";
-import Paragraph from "./Paragraph";
 import { Editor, EditorState, RichUtils } from "draft-js";
 import "draft-js/dist/Draft.css";
 
@@ -250,18 +249,10 @@ export default function Board() {
       </>
     ));
 
-  /*text-editor handler */
-  const focusHandler = () => {
-    textElement.current.focus();
-  };
-  const enterHandler = (e) => {
-
-    if (e.key === "Enter") {
+    const onFocusHandler = (e) => {
       e.preventDefault();
-      setParagraphs([...paragraphs, ""]);
-      focusHandler();
+      textElement.current.focus();
     }
-  };
 
   return (
     <BoardSection>
