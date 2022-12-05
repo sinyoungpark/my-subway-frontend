@@ -31,20 +31,14 @@ export default function Navigation({ activeHamburger, setActiveHamburger }) {
               </Link>
             </li>
             <li>
-              <Link
-                to="/menu/ingredients"
-                onClick={(e) => openMobileNav(e)}
-              >
+              <Link to="/menu/ingredients" onClick={(e) => openMobileNav(e)}>
                 재료
               </Link>
             </li>
           </ul>
         </li>
         <li>
-          <Link
-            to="/order"
-            onClick={(e) => openMobileNav(e)}
-          >
+          <Link to="/order" onClick={(e) => openMobileNav(e)}>
             주문연습
           </Link>
         </li>
@@ -52,18 +46,12 @@ export default function Navigation({ activeHamburger, setActiveHamburger }) {
           랭킹/게시판
           <ul className="gnb-sub-wrap">
             <li>
-              <Link
-                to="/ranking"
-                onClick={(e) => openMobileNav(e)}
-              >
+              <Link to="/ranking" onClick={(e) => openMobileNav(e)}>
                 랭킹
               </Link>
             </li>
             <li>
-              <Link
-                to="/board"
-                onClick={(e) => openMobileNav(e)}
-              >
+              <Link to="/board" onClick={(e) => openMobileNav(e)}>
                 게시판
               </Link>
             </li>

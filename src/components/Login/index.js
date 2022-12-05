@@ -46,9 +46,7 @@ const Login = () => {
         })
         .catch((e) => {
           console.log(e);
-          setError(
-            "아이디 또는 비밀번호를 잘못 입력했습니다."
-          );
+          setError("아이디 또는 비밀번호를 잘못 입력했습니다.");
         });
     } else {
       setError("이메일, 비밀번호를 입력해주세요.");

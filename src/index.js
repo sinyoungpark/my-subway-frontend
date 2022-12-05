@@ -22,9 +22,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path : "/",
-        element : <Customers/>,
-        children : [
+        path: "/",
+        element: <Customers />,
+        children: [
           {
             path: "/",
             element: <Home />,
@@ -47,14 +47,14 @@ const router = createBrowserRouter([
             element: <Ranking />,
           },
           {
-            path : "board",
-            element : <Board/>
+            path: "board",
+            element: <Board />,
           },
           {
-            path : 'order',
-            element : <Order/>
+            path: "order",
+            element: <Order />,
           },
-        ]
+        ],
       },
       {
         path: "signup",
@@ -65,23 +65,23 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path : "admin",
-        element : <Admin/>,
-      //   children : [
-      //     {
-      //       path : "user",
-      //       element : <AdminUser/>
-      //     },
-      //     {
-      //       path : "menu",
-      //       element : <AdminMenu/>
-      //     },
-      //     {
-      //       path : "ad",
-      //       element :  <AdminAd/>
-      //     }
-      //   ]
-      }
+        path: "admin",
+        element: <Admin />,
+        //   children : [
+        //     {
+        //       path : "user",
+        //       element : <AdminUser/>
+        //     },
+        //     {
+        //       path : "menu",
+        //       element : <AdminMenu/>
+        //     },
+        //     {
+        //       path : "ad",
+        //       element :  <AdminAd/>
+        //     }
+        //   ]
+      },
     ],
   },
 ]);

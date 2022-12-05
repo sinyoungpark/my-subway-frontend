@@ -1,12 +1,5 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { Navigate } from "react-router-dom";
-import { AdContext, RankingsContext, RequestUrl, UserContext } from "../../../App";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { RequestUrl, UserContext } from "../../../App";
 import axios from "axios";
 import SlideCard from "./SlideCard";
 import {
@@ -25,7 +18,7 @@ export default function Home() {
   const [baseUrl] = useContext(RequestUrl);
   const [user] = useContext(UserContext);
   const [recipesData, setRecipesData] = useState([]);
-  const [adData] = useContext(AdContext);
+  const [adData, setAdData] = useState([]);
   const [rankingData, setRankingsData] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
@@ -41,6 +34,10 @@ export default function Home() {
   };
 
   useEffect(() => {
+    getAdData();
+  }, []);
+
+  useEffect(() => {
     getRecipesData();
     getRakingsData();
     setRefresh(false);
@@ -49,9 +46,20 @@ export default function Home() {
   useEffect(() => {
     slideTimer();
     if (adEl.current !== null) {
+      console.log("notnulll");
       adListRef.current.style.left = `-${adEl.current.clientWidth * curIdx}px`;
     }
-  }, [curIdx]);
+  }, [curIdx, adData]);
+
+  const getAdData = () => {
+    axios
+      .get(`${baseUrl}/ad`, config)
+      .then((res) => res.data)
+      .then((data) => {
+        setAdData(data.adData);
+      })
+      .catch((error) => console.log(error));
+  };
 
   const getRecipesData = () => {
     axios

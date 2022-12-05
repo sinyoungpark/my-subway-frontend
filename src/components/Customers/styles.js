@@ -33,6 +33,11 @@ export const Footer = styled.footer`
     width  :100%;
     margin : 0;
     padding : 0 1rem;
+    flex-direction : column;
+
+    .copyright{
+      margin : 10px 0;
+    }
   }
 
 `;

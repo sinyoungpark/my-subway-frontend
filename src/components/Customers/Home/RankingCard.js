@@ -22,7 +22,6 @@ export default function RankingCard({ item, num, likesBtnHandler }) {
       </IngredinetItems>
       <Writer>
         <p>{User.name}</p>
-        <img src={User.profileImg} alt="글쓴이" />
       </Writer>
       <LikeBtn className="likes" onClick={(e) => likesBtnHandler(e)} data-id={id}>
         <ThumbUpIcon className="likes-icon" />

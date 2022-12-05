@@ -325,11 +325,11 @@ export const Ads = styled.section`
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  margin : 20px;
   @media screen and (max-width: 600px) {
     height: 500px;
     order: 1;
     box-shadow : none;
+    margin-top : 70px;
   }
 `;
 

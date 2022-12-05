@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 import { SignupSection, LeftSection, RightSection, Subtext } from "./styles";
@@ -107,7 +107,9 @@ const Signup = () => {
               }}
             />
             <Error className="signup-error">{error}</Error>
-            <Link to="/login" className="only-mobile login">로그인</Link>
+            <Link to="/login" className="only-mobile login">
+              로그인
+            </Link>
             <SubmitBtn type="submit" value="SIGN UP" onClick={submitSignup} />
           </Form>
         </RightSection>
