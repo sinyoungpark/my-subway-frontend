@@ -67,7 +67,8 @@ export const Items = styled.ul`
   @media screen and (max-width : 600px){
     height : max-content;
     margin-top : 10px;
-    padding : 0 20px;
+    padding : 0 13px;
+    gap : 10px;
     justify-content:  space-between;
   }
 `;
@@ -98,9 +99,11 @@ export const Item = styled.li`
   }
 
   @media screen and (max-width : 600px){
-    flex-basis : 43%;
+    width  :47%;
+    margin : 10px 0;
+    height : max-content;
     .item-img{
-      width  :180px;
+      width  :160px;
       height : 140px;
     }
   }

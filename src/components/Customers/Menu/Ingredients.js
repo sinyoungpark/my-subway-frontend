@@ -48,13 +48,13 @@ export default function Ingredients() {
         </Maintlt>
       </MainVisual>
       <Inner>
-        <Category>
+        {/* <Category>
           <li>All</li>
           <li>빵</li>
           <li>야채</li>
           <li>치즈</li>
           <li>소스</li>
-        </Category>
+        </Category> */}
         <Items>{ingredientElements}</Items>
       </Inner>
     </MenuSection>

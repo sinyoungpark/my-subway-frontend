@@ -47,13 +47,13 @@ export default function Sandwich() {
         </Maintlt>
       </MainVisual>
       <Inner>
-        <Category>
+        {/* <Category>
           <li>All</li>
           <li>클래식</li>
           <li>{`플래쉬&라이트`}</li>
           <li>프리미엄</li>
           <li>신제품</li>
-        </Category>
+        </Category> */}
         <Items>{sandwichData && sandwichElements}</Items>
       </Inner>
     </MenuSection>
