@@ -25,7 +25,7 @@ export default function Home() {
   const [baseUrl] = useContext(RequestUrl);
   const [user] = useContext(UserContext);
   const [recipesData, setRecipesData] = useState([]);
-  const [adData] = useContext(AdContext);
+  const [adData, setAdData] = useState([]);
   const [rankingData, setRankingsData] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
@@ -39,6 +39,10 @@ export default function Home() {
       authorization: `Bearer ${user.accesstoken}`,
     },
   };
+
+  useEffect(() => {
+    getAdData();
+  }, []);
 
   useEffect(() => {
     getRecipesData();

@@ -1,26 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Customers from "../components/Customers";
-import Admin from "../components/Admin";
-import { Navigate, Outlet } from "react-router-dom";
-import Login from "../components/Login";
+import { Outlet } from "react-router-dom";
 
 axios.defaults.withCredentials = true;
 
 export const UserContext = React.createContext([]);
-export const AdContext = React.createContext([]);
 export const RequestUrl = React.createContext([]);
 
 const App = () => {
   const [baseUrl] = useState("https://subway-server.loca.lt");
   const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [adData, setAdData] = useState([]);
-  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     getRefreshToken();
-    getAdData();
   }, []);
 
   const config = {
@@ -44,22 +36,10 @@ const App = () => {
       .catch((error) => console.log(error));
   };
 
-  const getAdData = () => {
-    axios
-      .get(`${baseUrl}/ad`, config)
-      .then((res) => res.data)
-      .then((data) => {
-        setAdData(data.adData);
-      })
-      .catch((error) => console.log(error));
-  };
-
   return (
     <UserContext.Provider value={[user, setUser]}>
       <RequestUrl.Provider value={[baseUrl]}>
-        <AdContext.Provider value={[adData, setAdData]}>
-          <Outlet />
-        </AdContext.Provider>
+        <Outlet />
       </RequestUrl.Provider>
     </UserContext.Provider>
   );
