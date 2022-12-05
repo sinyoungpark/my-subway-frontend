@@ -275,21 +275,12 @@ export default function Board() {
         </div>
 
         <div className="select-group">
-          <label htmlFor="bread">2.빵을 선택해주세요.</label>
-          <select name="bread" id="bread">
-            {/* {
-              ingredientsData && ingredientsData.map((item) => <option value={item.id} key={item.id}>{item.name}</option>)
-            } */}
-          </select>
-        </div>
-
-        <div className="select-group">
-          <label htmlFor="ingredients">3. 야채 선택</label>
+          <label htmlFor="ingredients">2. 재료 선택</label>
           <div id="toppings" className="checkbox">
             {ingredientsOptions}
           </div>
         </div>
-
+{/* 
         <div className="select-group">
           <label htmlFor="sauce">5. 소스 선택(최대 3개)</label>
           <div id="sauce" className="checkbox">
@@ -302,7 +293,7 @@ export default function Board() {
             <input type="checkbox" name="" id="에그마요" />
             <label htmlFor="에그마요">에그마요</label>
           </div>
-        </div>
+        </div> */}
       </Selection>
 
       <RichText>
