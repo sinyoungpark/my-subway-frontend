@@ -57,10 +57,10 @@ export const Selection = styled.section`
 
   @media screen and (max-width : 600px){
     hegiht : max-content;
-    flex-direction : row;
+    flex-direction : column;
     justify-content : space-between;
     .select-group{
-      margin-bottom : 20px;
+      margin : 0;
     }
   }
 `;
@@ -79,7 +79,7 @@ export const RichText = styled.section`
 
   @media screen and (max-width : 600px){
     width : 100%;
-    margin-top : 20px;
+    margin-top : 0;
   }
 `;
 

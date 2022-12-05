@@ -27,6 +27,7 @@ export const Chatbox = styled.div`
     width : 100%;
     border-radius : 0px;
     box-shadow : none;
+    min-height : 100vh;
     height : max-content;
     overflow : hidden;
   }
