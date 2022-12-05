@@ -1,12 +1,5 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { Navigate } from "react-router-dom";
-import { AdContext, RankingsContext, RequestUrl, UserContext } from "../../../App";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { RequestUrl, UserContext } from "../../../App";
 import axios from "axios";
 import SlideCard from "./SlideCard";
 import {

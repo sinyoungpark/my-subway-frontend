@@ -27,7 +27,7 @@ export const DesktopHeader = styled.header`
 `;
 
 export const MobileHeader = styled.header`
-  width: 100%;
+  width: 100vw;
   height: 70px;
   background-color: white;
   display: flex;
