@@ -31,7 +31,6 @@ const App = () => {
           name: data.name,
           email: data.email,
         });
-        setLoading(false);
       })
       .catch((error) => console.log(error));
   };
