@@ -2,32 +2,42 @@ import React, { useContext, useEffect, useState } from "react";
 import UserDialog from "./UserDialog";
 import StaffDialog from "./StaffDialog";
 import axios from "axios";
-import { Dialogs, OrderSection, SandwichItem, Sandwich } from "./styles";
-import { RequestUrl } from "../../../App";
+import {
+  Dialogs,
+  OrderSection,
+  SandwichItem,
+  Sandwich,
+  Chatbox,
+  ChatHeader,
+  Profile,
+} from "./styles";
+import { RequestUrl, UserContext } from "../../../App";
+import profileImg from "../../../img/user-profile.jpg";
 
 export default function Order() {
+  const [user] = useContext(UserContext);
   const [baseUrl] = useContext(RequestUrl);
-  const [CurMessage, setCurMessage] = useState("");
-  const [staffMessage, setStaffMessage] = useState([
-    "안녕하세요, 서브웨이입니다!",
-    "원하시는 메뉴를 골라주세요.",
-  ]);
   const [curIdx, setCurIdx] = useState(0);
   const [sandwichData, setSandwichData] = useState([]);
-  const [userMessage, setUserMessage] = useState("");
+  const [ingredientsData, setIngredientsData] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      type: "staff",
+      text: "안녕하세요, 서브웨이입니다.",
+    },
+  ]);
 
   useEffect(() => {
-    makeStaffDialog();
+    getSandwichData();
+    getIngredients();
+  }, []);
+
+  useEffect(() => {
+    makeDialogs();
   }, [curIdx]);
 
-  const getSandwichData = () => {
-    axios
-      .get(`${baseUrl}/menu/sandwich`)
-      .then((res) => res.data)
-      .then((data) => {
-        setSandwichData(data.sandwichData);
-      })
-      .catch((err) => console.log(err));
+  const countIdx = () => {
+    setCurIdx(curIdx + 1);
   };
 
   const time = (ms) => {
@@ -36,23 +46,18 @@ export default function Order() {
     });
   };
 
-  const makeStaffDialog = async () => {
-    await time(2000);
-    setCurMessage(`${staffMessage[curIdx]}`);
-
-    if (curIdx === 1) getSandwichData();
-    else setSandwichData([]);
-  };
-
-  const countIdx = () => {
-    setCurIdx(curIdx + 1);
-  };
-
-  const selectSandwich = async (e) => {
-    const sandwich = e.currentTarget.dataset.name;
-    await time(2000);
-    setUserMessage(sandwich);
-  };
+  const ingredientsElements =
+    ingredientsData &&
+    ingredientsData.map((item, idx) => {
+      const { name, kcal, img, Type } = item;
+      return (
+        <Sandwich key={idx} onClick={(e) => selectSandwich(e)} data-name={name}>
+          <img src={img} alt="" className="sandwich-img" />
+          <p className="sandwich-name">{name}</p>
+          <p className="kcal">{kcal} kcal</p>
+        </Sandwich>
+      );
+    });
 
   const sandwichElements =
     sandwichData &&
@@ -67,14 +72,113 @@ export default function Order() {
       );
     });
 
+  const selectSandwich = async (e) => {
+    const sandwich = e.currentTarget.dataset.name;
+    await time(2000);
+    setMessages([
+      ...messages,
+      {
+        type: "user",
+        text: sandwich,
+      },
+    ]);
+
+    if (curIdx === 1 || curIdx === 3) {
+      countIdx();
+    }
+  };
+
+  const dialogsEle =
+    messages &&
+    messages.map((item, idx) => {
+      console.log(idx, item);
+      if (item.type === "staff") {
+        if (idx === 1) {
+          return (
+            <>
+              <StaffDialog message={item.text} />
+              <SandwichItem> {sandwichElements}</SandwichItem>
+            </>
+          );
+        } else if (idx === 3) {
+          return (
+            <>
+              <StaffDialog message={item.text} />
+              <SandwichItem> {ingredientsElements}</SandwichItem>
+            </>
+          );
+        }
+        return <StaffDialog message={item.text} />;
+      } else if (item.type === "user") {
+        return <UserDialog message={item.text} />;
+      }
+    });
+
+  const makeDialogs = async () => {
+    if (curIdx === 0) {
+      await time(2000);
+      setMessages([
+        ...messages,
+        {
+          type: "staff",
+          text: "원하시는 메뉴를 선택해주세요",
+        },
+      ]);
+      countIdx();
+    } else if (curIdx === 2) {
+      await time(2000);
+      setMessages([
+        ...messages,
+        {
+          type: "staff",
+          text: "원하시는 재료를 선택해주세요",
+        },
+      ]);
+      countIdx();
+    } else if (curIdx === 4) {
+      await time(2000);
+      setMessages([
+        ...messages,
+        {
+          type: "staff",
+          text: "주문이 완료되었습니다.",
+        },
+      ]);
+      countIdx();
+    }
+  };
+
+  const getSandwichData = () => {
+    axios
+      .get(`${baseUrl}/menu/sandwich`)
+      .then((res) => res.data)
+      .then((data) => {
+        setSandwichData(data.sandwichData);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const getIngredients = () => {
+    axios
+      .get(`${baseUrl}/menu/ingredients`)
+      .then((res) => res.data)
+      .then((data) => {
+        setIngredientsData(data.ingredientsData);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <OrderSection>
-      <Dialogs>
-        {CurMessage && <StaffDialog message={CurMessage} />}
-        {sandwichData.length && <SandwichItem>{sandwichElements}</SandwichItem>}
-        <UserDialog message={userMessage} />
-      </Dialogs>
-      <button onClick={countIdx}>다음</button>
+      <Chatbox>
+        <ChatHeader>
+          <Profile>
+            <img src={profileImg} alt="user-profile" />
+            <p className="username">{user.name}</p>
+          </Profile>
+        </ChatHeader>
+        <Dialogs>{dialogsEle}</Dialogs>
+      </Chatbox>
     </OrderSection>
   );
 }
