@@ -49,9 +49,20 @@ export default function Home() {
   useEffect(() => {
     slideTimer();
     if (adEl.current !== null) {
+      console.log("notnulll");
       adListRef.current.style.left = `-${adEl.current.clientWidth * curIdx}px`;
     }
-  }, [curIdx]);
+  }, [curIdx, adData]);
+
+  const getAdData = () => {
+    axios
+      .get(`${baseUrl}/ad`, config)
+      .then((res) => res.data)
+      .then((data) => {
+        setAdData(data.adData);
+      })
+      .catch((error) => console.log(error));
+  };
 
   const getRecipesData = () => {
     axios
