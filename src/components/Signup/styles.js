@@ -12,6 +12,7 @@ export const SignupSection = styled.section`
   }
 
   @media screen and (max-width: 600px) {
+    overflow : hidden;
     .only-desktop {
       display: none;
     }
@@ -39,6 +40,7 @@ export const RightSection = styled.section`
   color: white;
   @media screen and (max-width : 600px){
     flex-basis : 100%;
+    width : 100%;
   }
 `;
 

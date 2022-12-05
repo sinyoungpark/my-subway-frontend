@@ -12,6 +12,7 @@ export const LoginSection = styled.section`
   }
 
   @media screen and (max-width: 600px) {
+    overflow : hidden;
     .only-desktop {
       display: none;
     }
@@ -133,6 +134,7 @@ export const LeftSection = styled.section`
 
   @media screen and (max-width : 600px){
     flex-basis : 100%;
+    width : 100%;
   }
 `;
 
