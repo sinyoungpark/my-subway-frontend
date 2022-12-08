@@ -200,14 +200,13 @@ export default function Board() {
 
   const sendRecipe = (e) => {
     e.preventDefault();
-    console.log(user, config);
     axios
       .post(`${baseUrl}/recipes`, sendData, config)
       .then((res) => res.data)
       .then((data) => {
         alert(data.data);
       })
-      .error((e) => alert("입력해주세요."))
+      .catch((e) => console.log(e))
   };
 
   const sandwichOptions =
