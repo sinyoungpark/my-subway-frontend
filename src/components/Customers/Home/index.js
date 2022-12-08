@@ -98,7 +98,7 @@ export default function Home() {
     axios
       .delete(`${baseUrl}/recipes?postId=${postId}`, config)
       .then((res) => res.data)
-      .then((data) => getRecipesData())
+      .then((data) => setRefresh(!refresh))
       .catch((error) => console.error(error));
   };
 
