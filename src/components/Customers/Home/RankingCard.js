@@ -3,7 +3,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { IngredinetItems, RankingItem, Writer, LikeBtn } from "./styles";
 
 export default function RankingCard({ item, num, likesBtnHandler }) {
-  const { title, id, Likes, User, Menu, Ingredients } = item;
+  const { title, id, count, User, Menu, Ingredients } = item;
 
   return (
     <RankingItem>
@@ -25,7 +25,7 @@ export default function RankingCard({ item, num, likesBtnHandler }) {
       </Writer>
       <LikeBtn className="likes" onClick={(e) => likesBtnHandler(e)} data-id={id}>
         <ThumbUpIcon className="likes-icon" />
-        좋아요 {Likes.length}개
+        좋아요 {count}개
       </LikeBtn>
     </RankingItem>
   );
