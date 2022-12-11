@@ -28,5 +28,6 @@ my-subway-recipes는 나만의 subway 샌드위치 레시피를 서로 공유하
 
 ![image](https://user-images.githubusercontent.com/45649186/206459674-5c466cf3-688c-4b0e-9b10-f72d964c22ef.png)
 
-### Build with 
-
+### Contact 
+email - sinyou.park12@gmail.com
+project link - https://github.com/sinyoungpark/my-subway-frontend
