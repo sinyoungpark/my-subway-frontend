@@ -8,6 +8,7 @@
 <br/>
 
 ## 🏠 About The Project
+화면을 클릭해보세요.
 [![image](https://user-images.githubusercontent.com/45649186/206458472-3aa12e30-7984-4a3d-b666-77e469cad064.png)](http://my-subway-recipes.site/)
 
 ### 📌 사용법 
